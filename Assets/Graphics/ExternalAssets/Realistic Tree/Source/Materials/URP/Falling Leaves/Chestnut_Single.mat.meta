@@ -11,5 +11,6 @@ AssetOrigin:
   productId: 229716
   packageName: Realistic Tree Pack 1
   packageVersion: 1.0
-  assetPath: Assets/Realistic Tree/Source/Materials/URP/Falling Leaves/Chestnut_Single.mat
+  assetPath: Assets/Graphics/ExternalAssets/Realistic Tree/Source/Materials/URP/Falling
+    Leaves/Chestnut_Single.mat
   uploadId: 519026

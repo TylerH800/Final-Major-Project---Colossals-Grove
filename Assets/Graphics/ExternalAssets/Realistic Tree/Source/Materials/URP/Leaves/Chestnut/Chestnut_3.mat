@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _ALPHATEST_ON
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
@@ -74,6 +73,7 @@ Material:
     - Vector1_15425b8b103a4e46acb8796d0a7d47b9: 10
     - Vector1_16459bbb1d07443993d6e5d2236b6dd1: 10
     - Vector1_298a8adeeafa4765807912f3f222cb52: 0
+    - Vector1_2f50a0630c94441fb682cddfa70cadaf: 0
     - Vector1_48307e745e604cb49641bf5f2a3ed14c: 20
     - Vector1_682f99ec21134f4fae0c96f53991898e: 1.01
     - Vector1_6e7442fb55b047f0a20d788f2277d98a: 0.454
@@ -106,6 +106,8 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _OpaqueCullMode: 2
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -157,6 +159,7 @@ Material:
     - Color5: {r: 0, g: 0, b: 0, a: 0}
     - Color6: {r: 0, g: 0, b: 0, a: 0}
     - Color7: {r: 0, g: 0, b: 0, a: 0}
+    - Color_0f54143eb8ff472192a294b030d8887d: {r: 0, g: 0, b: 0, a: 0}
     - Color_1151403abe3d4c3886a934276b2674d2: {r: 1, g: 1, b: 1, a: 0}
     - Color_118e71b9c10c4eed91eea60a3ba568b1: {r: 1, g: 1, b: 1, a: 0}
     - Color_1bed982ca42745abb45870f27ac78d2b: {r: 0.9716981, g: 0, b: 0, a: 0}
@@ -175,7 +178,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3433738502823923203
+--- !u!114 &2151937385666918458
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

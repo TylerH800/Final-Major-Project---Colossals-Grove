@@ -10,5 +10,6 @@ AssetOrigin:
   productId: 229716
   packageName: Realistic Tree Pack 1
   packageVersion: 1.0
-  assetPath: Assets/Realistic Tree/Prefabs/URP/Spruce/Spruce Group 2.prefab
+  assetPath: Assets/Graphics/ExternalAssets/Realistic Tree/Prefabs/URP/Spruce/Spruce
+    Group 2.prefab
   uploadId: 519026

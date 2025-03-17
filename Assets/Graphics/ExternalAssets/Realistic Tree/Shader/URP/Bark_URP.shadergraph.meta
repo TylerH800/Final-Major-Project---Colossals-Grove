@@ -13,5 +13,5 @@ AssetOrigin:
   productId: 229716
   packageName: Realistic Tree Pack 1
   packageVersion: 1.0
-  assetPath: Assets/Realistic Tree/Shader/URP/Bark_URP.shadergraph
+  assetPath: Assets/Graphics/ExternalAssets/Realistic Tree/Shader/URP/Bark_URP.shadergraph
   uploadId: 519026
