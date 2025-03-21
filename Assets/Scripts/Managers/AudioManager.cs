@@ -1,0 +1,128 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
+
+public class AudioManager : MonoBehaviour
+{
+    public static AudioManager Instance;
+
+    public AudioMixer mixer;
+    public AudioSource sfxSource;
+    public AudioSource musicSource;
+    public AudioSource dialogueSource;
+
+    public Slider masterVolumeSlider;
+    public Slider sfxVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider dialogueVolumeSlider;
+
+    public TextMeshProUGUI masterVolumeText;
+    public TextMeshProUGUI musicVolumeText;
+    public TextMeshProUGUI sfxVolumeText;
+    public TextMeshProUGUI dialogueVolumeText;
+    public Toggle subtitlesToggle;
+
+    void Awake()
+    {
+        //singleton design pattern
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        SetAudioValues();
+        SetUIValues();
+    }
+
+    #region Saving and Loading   
+
+    void SetAudioValues()
+    {      
+        //thanks to save data checks in awake when the game runs, i can simply set the mixer to the previously saved value
+        mixer.SetFloat("MixerMasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
+        mixer.SetFloat("MixerMusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
+        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);
+        mixer.SetFloat("MixerDialogueVolume", Mathf.Log10(PlayerPrefs.GetFloat("DialogueVolume")) * 20);
+    }
+
+    void SetUIValues()
+    {
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        dialogueVolumeSlider.value = PlayerPrefs.GetFloat("DialogueVolume");
+
+        masterVolumeText.text = PlayerPrefs.GetFloat("MasterVolume").ToString("F2");
+        musicVolumeText.text = PlayerPrefs.GetFloat("MusicVolume").ToString("F2");
+        sfxVolumeText.text = PlayerPrefs.GetFloat("SFXVolume").ToString("F2");
+        dialogueVolumeText.text = PlayerPrefs.GetFloat("DialogueVolume").ToString("F2");
+        subtitlesToggle.isOn = PlayerPrefs.GetInt("Subtitles") == 1;
+    }
+
+    #endregion
+
+    #region Settings
+
+    public void SetMasterVolume(float value)
+    {        
+        //sets mixer to inputted value as well as display text
+        mixer.SetFloat("MixerMasterVolume", Mathf.Log10(value) * 20);
+        masterVolumeText.text = value.ToString("F2");
+        //saves value
+        PlayerPrefs.SetFloat("MasterVolume", value);
+    }
+    public void SetSFXVolume(float value)
+    {       
+        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(value) * 20);
+        musicVolumeText.text = value.ToString("F2");
+        PlayerPrefs.SetFloat("SFXVolume", value);
+    }
+    public void SetMusicVolume(float value)
+    {      
+        mixer.SetFloat("MixerMusicVolume", Mathf.Log10(value) * 20);
+        musicVolumeText.text = value.ToString("F2");
+        PlayerPrefs.SetFloat("MusicVolume", value);
+    }
+    public void SetDialogueVolume(float value)
+    {      
+        mixer.SetFloat("MixerDialogueVolume", Mathf.Log10(value) * 20);
+        dialogueVolumeText.text = value.ToString("F2");
+        PlayerPrefs.SetFloat("DialogueVolume", value);
+    }
+
+    public void SetSubtitles(bool value)
+    {        
+        PlayerPrefs.SetInt("Subtitles", value ? 1 : 0);
+    }
+
+    #endregion
+
+    #region Playing Sound
+    //plays the sound provided with its clip volume
+    public void PlaySFX(SoundObject soundObject)
+    {
+        sfxSource.PlayOneShot(soundObject.soundClip, soundObject.volume);
+    }
+
+    //does the same but takes in a looping bool
+    public void PlayMusic(SoundObject soundObject)
+    {
+        musicSource.PlayOneShot(soundObject.soundClip, soundObject.volume);
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+    #endregion
+}

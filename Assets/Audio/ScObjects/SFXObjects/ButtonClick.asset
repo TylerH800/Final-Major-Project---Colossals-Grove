@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7572679ab8d1c3c4aaf1ff90111eb8b4, type: 3}
-  m_Name: ExampleSound
+  m_Name: ButtonClick
   m_EditorClassIdentifier: 
-  soundClip: {fileID: 8300000, guid: 5ddad9a49b19f2746b07d3324de1c83f, type: 3}
-  volume: 50
+  soundClip: {fileID: 8300000, guid: 1e7a587164fcbef45b40536469e6c432, type: 3}
+  volume: 1
