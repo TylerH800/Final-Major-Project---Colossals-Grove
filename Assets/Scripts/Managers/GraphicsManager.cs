@@ -128,7 +128,7 @@ public class GraphicsManager : MonoBehaviour
         //print(screenMode);
 
         //------------Graphics Quality-------------
-        QualitySettings.SetQualityLevel(graphicsQuality);
+        QualitySettings.SetQualityLevel(graphicsQuality, false);
         graphicsQualityDropdown.value = graphicsQuality;
         //print("Graphics Quality applied to " + graphicsQuality);
         

@@ -4,10 +4,10 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 0
+  m_CurrentQuality: 1
   m_QualitySettings:
   - serializedVersion: 4
-    name: Level 1
+    name: Low
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -22,7 +22,7 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 2
-    antiAliasing: 2
+    antiAliasing: 0
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -33,7 +33,7 @@ QualitySettings:
     realtimeGICPUUsage: 100
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
-    lodBias: 2
+    lodBias: 0.5
     maximumLODLevel: 0
     enableLODCrossFade: 1
     streamingMipmapsActive: 0
@@ -47,21 +47,21 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
-    terrainQualityOverrides: 0
+    customRenderPipeline: {fileID: 11400000, guid: 84ec8fa4956fb3842ac7d2073f12cfee, type: 2}
+    terrainQualityOverrides: 190
     terrainPixelError: 1
-    terrainDetailDensityScale: 1
-    terrainBasemapDistance: 1000
-    terrainDetailDistance: 35
-    terrainTreeDistance: 5000
-    terrainBillboardStart: 35
+    terrainDetailDensityScale: 0.3
+    terrainBasemapDistance: 100
+    terrainDetailDistance: 40
+    terrainTreeDistance: 200
+    terrainBillboardStart: 200
     terrainFadeLength: 5
-    terrainMaxTrees: 250
+    terrainMaxTrees: 400
     excludedTargetPlatforms:
     - Android
     - iPhone
   - serializedVersion: 4
-    name: Level 2
+    name: Medium
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -87,7 +87,7 @@ QualitySettings:
     realtimeGICPUUsage: 100
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
-    lodBias: 2
+    lodBias: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
     streamingMipmapsActive: 0
@@ -101,21 +101,21 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
-    terrainQualityOverrides: 0
+    customRenderPipeline: {fileID: 11400000, guid: 36e6861c3a03f204b932906736b16854, type: 2}
+    terrainQualityOverrides: 190
     terrainPixelError: 1
-    terrainDetailDensityScale: 1
-    terrainBasemapDistance: 1000
-    terrainDetailDistance: 35
-    terrainTreeDistance: 5000
-    terrainBillboardStart: 35
+    terrainDetailDensityScale: 0.6
+    terrainBasemapDistance: 400
+    terrainDetailDistance: 100
+    terrainTreeDistance: 450
+    terrainBillboardStart: 325
     terrainFadeLength: 5
-    terrainMaxTrees: 250
+    terrainMaxTrees: 650
     excludedTargetPlatforms:
     - Android
     - iPhone
   - serializedVersion: 4
-    name: Level 3
+    name: High
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -130,7 +130,7 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 2
-    antiAliasing: 2
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -155,16 +155,16 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
-    terrainQualityOverrides: 0
+    customRenderPipeline: {fileID: 11400000, guid: f558f19a9969a9a468414064af0280f1, type: 2}
+    terrainQualityOverrides: 190
     terrainPixelError: 1
     terrainDetailDensityScale: 1
     terrainBasemapDistance: 1000
-    terrainDetailDistance: 35
-    terrainTreeDistance: 5000
-    terrainBillboardStart: 35
+    terrainDetailDistance: 200
+    terrainTreeDistance: 1000
+    terrainBillboardStart: 500
     terrainFadeLength: 5
-    terrainMaxTrees: 250
+    terrainMaxTrees: 1000
     excludedTargetPlatforms:
     - Android
     - iPhone
@@ -179,7 +179,7 @@ QualitySettings:
     PS5: 0
     Server: 0
     Stadia: 0
-    Standalone: 0
+    Standalone: 1
     WebGL: 0
     Windows Store Apps: 0
     XboxOne: 0
