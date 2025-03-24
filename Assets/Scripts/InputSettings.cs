@@ -7,6 +7,7 @@ public class InputSettings : MonoBehaviour
     public Slider xSensSlider;
     public Slider ySensSlider;
     public Toggle holdToCrouchToggle;
+    public static bool holdToCrouch;
 
     public TextMeshProUGUI xSensText;
     public TextMeshProUGUI ySensText;    

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7572679ab8d1c3c4aaf1ff90111eb8b4, type: 3}
-  m_Name: ExampleMusic
+  m_Name: TitleMusic
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: ef31822ea40afe9468a6d3486ce8d112, type: 3}
   volume: 1

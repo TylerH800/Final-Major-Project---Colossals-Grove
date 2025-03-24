@@ -4,21 +4,9 @@ using UnityEngine;
 public class SaveDataCheck : MonoBehaviour
 {
     //this class is used to set all default playerprefs values in one place
-    public static SaveDataCheck Instance;
 
     private void Awake()
     {
-        //singleton design pattern
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         CheckAudioSaveData();
         CheckGraphicalSaveData();
         CheckInputSaveData();
