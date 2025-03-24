@@ -2,70 +2,178 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.Windows;
+using System.Xml;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private GameInput gameInput;
-    private Vector2 moveInput;
-    private bool isSprinting, isCrouching;
-    private bool isGrounded;
-
-    public float walkSpeed, sprintSpeed, crouchSpeed;
-
+    [Header("Movement Values")]
+    public float walkSpeed;
+    public float sprintSpeed, crouchSpeed;
     public float jumpHeight;
     public float gravity = -9.81f;
+
+    private bool isSprinting, isCrouching;
+    private bool holdToSprint, holdToCrouch;
+
+    [Header("Crouching")]
+    public float height;
+    public float crouchHeight;
+    public float centre; 
+    public float crouchCentre;
+
     Vector3 vertVelocity = Vector3.zero; //used for vertical movement
+
+    private float turnSmoothTime = 0.2f;
+    private float turnSmoothVelocity;
+
+    [Header("Groundcheck")]    
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
+    private bool isGrounded;
 
-    public bool holdToSprint;
-    public bool sprintToggleOn;
+    //Input
+    private GameInput gameInput;
+    private Vector2 moveInput;
 
-    private float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
-
-    private CharacterController characterController;
+    //references
+    private CharacterController cc;
     public Transform cam;
     private Animator animator;
+
+    #region Events
+    private void OnEnable()
+    {
+        EventManager.InputSettingsChanged += EMInputSettingsChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.InputSettingsChanged += EMInputSettingsChanged;
+    }
+
+    private void EMInputSettingsChanged()
+    {
+        holdToSprint = PlayerPrefs.GetInt("HoldToSprint") == 1;
+        holdToCrouch = PlayerPrefs.GetInt("HoldToCrouch") == 1;
+    }
+
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         gameInput = new GameInput();       
-        characterController = GetComponent<CharacterController>();      
+        cc = GetComponent<CharacterController>();      
         animator = GetComponentInChildren<Animator>();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        EMInputSettingsChanged(); //gets data about hold to sprint and crouch values
     }
 
     // Update is called once per frame
     void Update()
-    {      
-        HorizontalMovement();
-        VerticalMovement();
+    {
+        Gravity();
         Animation();
+        Movement();
 
     }
 
-    void OnMove(InputValue value)
+    #region Input
+    public void JumpInput(InputAction.CallbackContext ct)
     {
-        moveInput = value.Get<Vector2>();
-    }
-
-    void OnJump(InputValue value)
-    {
-        if (isGrounded)
+        if (ct.performed && isGrounded)
         {
-            vertVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            Jump();
         }
     }
 
-    void OnSprint()
+    public void MoveInput(InputAction.CallbackContext ct)
     {
-       
+        moveInput = ct.ReadValue<Vector2>();
     }
 
-    public void HorizontalMovement()
-    {     
+    public void SprintInput(InputAction.CallbackContext ct)
+    {
+        if (isCrouching)
+        {
+            isCrouching = false; //prevents crouch + sprint
+        }
+
+        //hold to sprint
+        if (holdToSprint)
+        {
+            if (ct.performed)
+            {
+                isSprinting = true;
+            }
+            if (ct.canceled)
+            {
+                isSprinting = false;
+            }
+        }
+
+        else
+        {
+            //toggle sprint
+            if (ct.performed)
+            {
+                isSprinting = isSprinting ? false : true;
+            }
+        }
+        
+    }
+
+    public void CrouchInput(InputAction.CallbackContext ct)
+    {
+        if (isSprinting)
+        {
+            isSprinting = false; //prevents crouch + sprint
+        }
+
+        //hold to crouch
+        if (holdToSprint)
+        {
+            if (ct.performed)
+            {
+                isCrouching = true;
+            }
+            if (ct.canceled)
+            {
+                isCrouching = false;
+            }
+        }
+
+        else
+        {
+            //toggle crouch
+            if (ct.performed)
+            {
+                isCrouching = isCrouching ? false : true;
+            }
+        }        
+
+    }
+    #endregion
+
+    void Movement()
+    {        
+        //crouching
+        if (isCrouching)
+        {
+            cc.height = crouchHeight;
+            cc.center = new Vector3(0, crouchCentre, 0);
+        }
+        else
+        {
+            cc.height = height;
+            cc.center = new Vector3(0, centre, 0);
+        }
+
+
         Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
         //changes targetspeed based on whether sprinting or crouching
@@ -81,22 +189,21 @@ public class PlayerMovement : MonoBehaviour
             // Calculate the movement direction
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            characterController.Move(moveDir.normalized * targetSpeed * Time.deltaTime);
+            cc.Move(moveDir.normalized * targetSpeed * Time.deltaTime);
 
         }
-        
-    }    
+    }
 
-    
+    void Jump() => vertVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); //lazy code lol
 
-    void VerticalMovement()
+    void Gravity()
     {
         // Ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);        
 
         //gravity
         vertVelocity.y += gravity * Time.deltaTime;
-        characterController.Move(vertVelocity * Time.deltaTime);
+        cc.Move(vertVelocity * Time.deltaTime);
 
         // Conditions for landing
         if (isGrounded && vertVelocity.y <= 0)
@@ -106,8 +213,7 @@ public class PlayerMovement : MonoBehaviour
     }  
     
     void Animation()
-    {
-        print(moveInput.magnitude);
+    {    
         //jump bool
         if (!isGrounded)
         {

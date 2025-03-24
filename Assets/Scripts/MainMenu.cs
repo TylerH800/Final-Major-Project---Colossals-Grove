@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class MainMenu : MonoBehaviour
     {
         InvokeRepeating("TitleMusic", 0.5f, titleMusic.soundClip.length);
     }
+
     public void StartGameButton()
     {
-
+        SceneManager.LoadScene("Test");
     }
     public void ExitGame()
     {

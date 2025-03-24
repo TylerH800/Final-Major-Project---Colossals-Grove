@@ -1,13 +1,15 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 public class InputSettings : MonoBehaviour
 {
     public Slider xSensSlider;
     public Slider ySensSlider;
     public Toggle holdToCrouchToggle;
-    public static bool holdToCrouch;
+    public Toggle holdToSprintToggle;
 
     public TextMeshProUGUI xSensText;
     public TextMeshProUGUI ySensText;    
@@ -20,9 +22,9 @@ public class InputSettings : MonoBehaviour
     void SetUIValues()
     {
         xSensSlider.value = PlayerPrefs.GetFloat("XSensitivity");
-        ySensSlider.value = PlayerPrefs.GetFloat("YSensitivity");
-        print(PlayerPrefs.GetFloat("XSensitivity"));
+        ySensSlider.value = PlayerPrefs.GetFloat("YSensitivity");        
         holdToCrouchToggle.isOn = PlayerPrefs.GetInt("HoldToCrouch") == 1;
+        holdToSprintToggle.isOn = PlayerPrefs.GetInt("HoldToSprint") == 1;
     }
 
     public void SetXSensitivity(float value)
@@ -41,6 +43,13 @@ public class InputSettings : MonoBehaviour
     public void HoldToCrouch(bool value)
     {
         PlayerPrefs.SetInt("HoldToCrouch", value ? 1 : 0);
+        EventManager.OnInputSettingsChanged();
+    }
+
+    public void HoldToSprint(bool value)
+    {
+        PlayerPrefs.SetInt("HoldToSprint", value ? 1 : 0);
+        EventManager.OnInputSettingsChanged();
     }
 
 

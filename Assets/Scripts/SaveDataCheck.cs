@@ -54,6 +54,7 @@ public class SaveDataCheck : MonoBehaviour
         SavedFloatCheck("XSensitivity", 0.5f);
         SavedFloatCheck("YSensitivity", 0.5f);
         SavedIntCheck("HoldToCrouch", 0);
+        SavedIntCheck("HoldToSprint", 0);
     }
 
     public void SavedFloatCheck(string key, float defaultValue) //used to avoid repetitive code checking for playerprefs values
