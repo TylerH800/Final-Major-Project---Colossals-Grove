@@ -155,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
                 isCrouching = isCrouching ? false : true;
             }
         }        
-
     }
     #endregion
 
