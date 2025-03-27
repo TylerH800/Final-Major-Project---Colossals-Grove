@@ -13,17 +13,50 @@ public class TeamMovement : MonoBehaviour
 
     public CharacterValues characterValues;
     private NavMeshAgent agent;
-    public Transform player;
+    private Animator anim;
+    private Transform player;
 
     private bool hasTarget;
     private bool isWaiting = false;
 
     private Vector3 currentIdlePosition;
 
+    #region Events
+
+    private void OnEnable()
+    {
+        EventManager.ChangeAIToFollow.AddListener(EMChangeAIToFollow);
+        EventManager.ChangeAIToFollow.AddListener(EMChangeAIToIdle);
+    }
+    private void OnDisable()
+    {
+        EventManager.ChangeAIToFollow.RemoveListener(EMChangeAIToFollow);
+        EventManager.ChangeAIToFollow.RemoveListener(EMChangeAIToIdle);
+    }
+
+    void EMChangeAIToFollow(int character)
+    {
+        if (character == characterValues.characterIndex)
+        {
+            state = AIState.following;
+        }
+    }
+
+    void EMChangeAIToIdle(int character)
+    {
+        if (character == characterValues.characterIndex)
+        {
+            state = AIState.idle;
+        }
+    }
+
+    #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         SetToIdle();
     }
 
@@ -32,8 +65,13 @@ public class TeamMovement : MonoBehaviour
     {
         StateMachine();
         SetSpeed();
+        Animation();
     }
 
+    void Animation()
+    {
+        anim.SetFloat("Velocity", agent.velocity.magnitude);
+    }
     void SetToIdle()
     {
         agent.SetDestination(transform.position);

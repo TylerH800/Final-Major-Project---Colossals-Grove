@@ -44,12 +44,12 @@ public class PlayerMovement : MonoBehaviour
     #region Events
     private void OnEnable()
     {
-        EventManager.InputSettingsChanged += EMInputSettingsChanged;
+        EventManager.InputSettingsChanged.AddListener(EMInputSettingsChanged);
     }
 
     private void OnDisable()
     {
-        EventManager.InputSettingsChanged += EMInputSettingsChanged;
+        EventManager.InputSettingsChanged.RemoveListener(EMInputSettingsChanged);
     }
 
     private void EMInputSettingsChanged()
@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
         Animation();
         Movement();
+     
 
     }
 
