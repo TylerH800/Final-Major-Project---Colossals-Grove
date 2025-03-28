@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Leda
   m_EditorClassIdentifier: 
   walkSpeed: 4
-  runSpeed: 6
+  runSpeed: 7
   followDistance: 5
   runDistance: 12
+  characterIndex: 1

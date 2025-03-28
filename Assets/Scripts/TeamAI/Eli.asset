@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d56d33b086127479c3b2c22f0fa76d, type: 3}
   m_Name: Eli
   m_EditorClassIdentifier: 
-  walkSpeed: 2.5
-  runSpeed: 4
+  walkSpeed: 3
+  runSpeed: 5.5
   followDistance: 3
   runDistance: 6
+  characterIndex: 0

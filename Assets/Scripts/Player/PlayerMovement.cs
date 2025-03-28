@@ -44,12 +44,12 @@ public class PlayerMovement : MonoBehaviour
     #region Events
     private void OnEnable()
     {
-        EventManager.InputSettingsChanged.AddListener(EMInputSettingsChanged);
+        EventManager.InputSettingsChanged += EMInputSettingsChanged;
     }
 
     private void OnDisable()
     {
-        EventManager.InputSettingsChanged.RemoveListener(EMInputSettingsChanged);
+        EventManager.InputSettingsChanged -= EMInputSettingsChanged;
     }
 
     private void EMInputSettingsChanged()
@@ -85,9 +85,9 @@ public class PlayerMovement : MonoBehaviour
 
     #region Input
     public void JumpInput(InputAction.CallbackContext ct)
-    {
+    {     
         if (ct.performed && isGrounded)
-        {
+        {            
             Jump();
         }
     }

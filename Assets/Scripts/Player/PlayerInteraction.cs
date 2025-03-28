@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 public class PlayerInteraction : MonoBehaviour
 {
     public PlayerInput playerInput;
+    private GameInput gameInput;
     int inputIndex; //0 = m&k, 1 = controller
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        
+        playerInput = GetComponent<PlayerInput>();   
+        gameInput = new GameInput();
     }
 
     private void Update()
@@ -17,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
         CheckControlScheme();
     }
 
-    void CheckControlScheme()
+    public void CheckControlScheme()
     {
         if (playerInput.currentControlScheme == null)
         {
@@ -32,7 +33,23 @@ public class PlayerInteraction : MonoBehaviour
         {
             inputIndex = 1;
         }
+    }
 
-        print(inputIndex);
+    public void ToggleEliState(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EventManager.OnChangeEliAIMode();
+            print("Eli toggle");
+        }
+    }
+
+    public void ToggleLedaState(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EventManager.OnChangeLedaAIMode();
+            print("Leda toggle");
+        }        
     }
 }

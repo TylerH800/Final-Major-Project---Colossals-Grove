@@ -25,39 +25,53 @@ public class TeamMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.ChangeAIToFollow.AddListener(EMChangeAIToFollow);
-        EventManager.ChangeAIToFollow.AddListener(EMChangeAIToIdle);
+        if (characterValues.characterIndex == 0) //eli index
+        {
+            EventManager.ChangeEliAIMode += EMChangeAIMode;
+        }
+        else
+        {
+            EventManager.ChangeLedaAIMode += EMChangeAIMode;
+        }
     }
     private void OnDisable()
     {
-        EventManager.ChangeAIToFollow.RemoveListener(EMChangeAIToFollow);
-        EventManager.ChangeAIToFollow.RemoveListener(EMChangeAIToIdle);
+        if (characterValues.characterIndex == 0) //eli index
+        {
+            EventManager.ChangeEliAIMode -= EMChangeAIMode;
+        }
+        else
+        {
+            EventManager.ChangeLedaAIMode -= EMChangeAIMode;
+        }
     }
 
-    void EMChangeAIToFollow(int character)
+    void EMChangeAIMode() //toggles between idle and follow
     {
-        if (character == characterValues.characterIndex)
+        if (state == AIState.idle)
+        {
+            state = AIState.following;
+        }
+        else if (state == AIState.following)
+        {
+            state = AIState.idle;
+            agent.SetDestination(transform.position);
+        }
+        else
         {
             state = AIState.following;
         }
     }
 
-    void EMChangeAIToIdle(int character)
-    {
-        if (character == characterValues.characterIndex)
-        {
-            state = AIState.idle;
-        }
-    }
-
     #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        SetToIdle();
+        SetToFollow();
     }
 
     // Update is called once per frame
