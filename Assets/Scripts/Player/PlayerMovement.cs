@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.Windows;
 using System.Xml;
+using Unity.Cinemachine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isSprinting, isCrouching;
     private bool holdToSprint, holdToCrouch;
+
+    public float xSens, ySens;
+    private CinemachineInputAxisController axisController;
 
     [Header("Crouching")]
     public float height;
@@ -49,13 +54,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.InputSettingsChanged -= EMInputSettingsChanged;
+        EventManager.InputSettingsChanged -=EMInputSettingsChanged;
     }
 
     private void EMInputSettingsChanged()
     {
         holdToSprint = PlayerPrefs.GetInt("HoldToSprint") == 1;
         holdToCrouch = PlayerPrefs.GetInt("HoldToCrouch") == 1;
+        xSens = PlayerPrefs.GetFloat("XSensitivity");
+        ySens = PlayerPrefs.GetFloat("YSensitivity");
+        ChangeSensitivity();
+    }
+
+    void ChangeSensitivity()
+    {
+        axisController = GetComponentInChildren<CinemachineInputAxisController>();
+        foreach (var c in axisController.Controllers)
+        {
+            
+            if (c.Name == "Look Orbit X")
+            {             
+                c.Input.Gain = xSens;
+            }
+            if (c.Name == "Look Orbit Y")
+            {             
+                c.Input.Gain = ySens;
+            }
+        }
     }
 
     #endregion
@@ -71,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
 
         EMInputSettingsChanged(); //gets data about hold to sprint and crouch values
+        EMSensitivityChanged(); //gets data about hold to sprint and crouch values
     }
 
     // Update is called once per frame
@@ -78,9 +104,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Gravity();
         Animation();
-        Movement();
-     
-
+        Movement(); 
     }
 
     #region Input

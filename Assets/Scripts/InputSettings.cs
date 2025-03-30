@@ -10,6 +10,7 @@ public class InputSettings : MonoBehaviour
     public Slider ySensSlider;
     public Toggle holdToCrouchToggle;
     public Toggle holdToSprintToggle;
+    public static float sensitivityMultiplier = 2.5f; //used to allow sens > 1 but shown value between 0 and 1
 
     public TextMeshProUGUI xSensText;
     public TextMeshProUGUI ySensText;    
@@ -29,15 +30,16 @@ public class InputSettings : MonoBehaviour
 
     public void SetXSensitivity(float value)
     {
-        PlayerPrefs.SetFloat("XSensitivity", value);
+        PlayerPrefs.SetFloat("XSensitivity", value * 2.5f);
         xSensText.text = value.ToString("F2");
+        EventManager.OnInputSettingsChanged();
     }
 
     public void SetYSensitivity(float value)
     {
-        PlayerPrefs.SetFloat("YSensitivity", value);
+        PlayerPrefs.SetFloat("YSensitivity", value * 2.5f);
         ySensText.text = value.ToString("F2");
-
+        EventManager.OnInputSettingsChanged();
     }
 
     public void HoldToCrouch(bool value)
