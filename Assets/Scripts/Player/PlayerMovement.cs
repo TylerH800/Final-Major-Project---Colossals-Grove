@@ -63,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
         holdToCrouch = PlayerPrefs.GetInt("HoldToCrouch") == 1;
         xSens = PlayerPrefs.GetFloat("XSensitivity");
         ySens = PlayerPrefs.GetFloat("YSensitivity");
-        ChangeSensitivity();
+        
     }
 
-    void ChangeSensitivity()
+    void EMSensitivityChanged()
     {
         axisController = GetComponentInChildren<CinemachineInputAxisController>();
         foreach (var c in axisController.Controllers)
