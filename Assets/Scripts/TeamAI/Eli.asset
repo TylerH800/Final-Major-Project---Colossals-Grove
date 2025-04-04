@@ -15,5 +15,5 @@ MonoBehaviour:
   walkSpeed: 3
   runSpeed: 5.5
   followDistance: 3
-  runDistance: 6
+  runDistance: 5
   characterIndex: 0
