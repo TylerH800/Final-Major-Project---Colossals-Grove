@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
     #region Input
     public void JumpInput(InputAction.CallbackContext ct)
     {     
-        if (ct.performed && isGrounded)
+        if (ct.performed && isGrounded && !isCrouching)
         {            
             Jump();
         }
