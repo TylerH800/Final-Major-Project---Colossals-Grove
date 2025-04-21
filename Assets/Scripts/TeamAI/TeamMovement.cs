@@ -4,20 +4,17 @@ using UnityEngine.AI;
 
 public class TeamMovement : MonoBehaviour
 {
-    private enum AIState
+    public enum AIState
     {
         idle, following, tasked
     }
 
-    private AIState state;
+    public AIState state;
 
     public CharacterValues characterValues;
-    private NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     private Animator anim;
-    private Transform player;
-
-    private bool hasTarget;
-    private bool isWaiting = false;
+    private Transform player;     
 
     private Vector3 currentIdlePosition;
 
@@ -93,12 +90,11 @@ public class TeamMovement : MonoBehaviour
     }
 
     void SetToFollow()
-    {
-        hasTarget = false;
+    {        
         state = AIState.following;
     }
 
-    void SetToTask()
+    public void SetToTask()
     {
         state = AIState.tasked;
     }
@@ -108,12 +104,7 @@ public class TeamMovement : MonoBehaviour
         if (state == AIState.following)
         {
             FollowPlayer();
-        }
-        if (state == AIState.tasked)
-        {
-            CheckForTaskArrival();
-        }
-
+        }       
     }
 
     void SetSpeed()
@@ -154,17 +145,5 @@ public class TeamMovement : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
-    }
-
-    void DoTask(Vector3 taskPosition)
-    {       
-        NavMeshHit hit;
-        NavMesh.SamplePosition(taskPosition, out hit, 1f, NavMesh.AllAreas);
-        agent.SetDestination(hit.position);
-    }
-
-    void CheckForTaskArrival()
-    {
-
     }
 }

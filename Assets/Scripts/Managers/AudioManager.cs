@@ -11,18 +11,14 @@ public class AudioManager : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource sfxSource;
     public AudioSource musicSource;
-    public AudioSource dialogueSource;
 
     public Slider masterVolumeSlider;
     public Slider sfxVolumeSlider;
     public Slider musicVolumeSlider;
-    public Slider dialogueVolumeSlider;
 
     public TextMeshProUGUI masterVolumeText;
     public TextMeshProUGUI musicVolumeText;
     public TextMeshProUGUI sfxVolumeText;
-    public TextMeshProUGUI dialogueVolumeText;
-    public Toggle subtitlesToggle;
 
     void Awake()
     {
@@ -51,22 +47,18 @@ public class AudioManager : MonoBehaviour
         //thanks to save data checks in awake when the game runs, i can simply set the mixer to the previously saved value
         mixer.SetFloat("MixerMasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
         mixer.SetFloat("MixerMusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
-        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);
-        mixer.SetFloat("MixerDialogueVolume", Mathf.Log10(PlayerPrefs.GetFloat("DialogueVolume")) * 20);
+        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);  
     }
 
     void SetUIValues()
     {
         masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        dialogueVolumeSlider.value = PlayerPrefs.GetFloat("DialogueVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");  
 
         masterVolumeText.text = PlayerPrefs.GetFloat("MasterVolume").ToString("F2");
         musicVolumeText.text = PlayerPrefs.GetFloat("MusicVolume").ToString("F2");
-        sfxVolumeText.text = PlayerPrefs.GetFloat("SFXVolume").ToString("F2");
-        dialogueVolumeText.text = PlayerPrefs.GetFloat("DialogueVolume").ToString("F2");
-        subtitlesToggle.isOn = PlayerPrefs.GetInt("Subtitles") == 1;
+        sfxVolumeText.text = PlayerPrefs.GetFloat("SFXVolume").ToString("F2"); 
     }
 
     #endregion
@@ -92,17 +84,6 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat("MixerMusicVolume", Mathf.Log10(value) * 20);
         musicVolumeText.text = value.ToString("F2");
         PlayerPrefs.SetFloat("MusicVolume", value);
-    }
-    public void SetDialogueVolume(float value)
-    {      
-        mixer.SetFloat("MixerDialogueVolume", Mathf.Log10(value) * 20);
-        dialogueVolumeText.text = value.ToString("F2");
-        PlayerPrefs.SetFloat("DialogueVolume", value);
-    }
-
-    public void SetSubtitles(bool value)
-    {        
-        PlayerPrefs.SetInt("Subtitles", value ? 1 : 0);
     }
 
     #endregion

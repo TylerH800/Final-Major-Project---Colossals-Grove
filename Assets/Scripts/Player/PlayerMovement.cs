@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (c.Name == "Look Orbit Y")
             {             
-                c.Input.Gain = ySens;
+                c.Input.Gain = -ySens;
             }
         }
     }

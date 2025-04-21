@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Eli
   - Leda
+  - Gate
+  - Barrel
+  - FxTemporaire
+  - NeutralColossal
   layers:
   - Default
   - TransparentFX
@@ -14,11 +18,11 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - InactiveObstacle
+  - SleepingColossal
+  - Player
+  - Team
   - 
   - 
   - 
