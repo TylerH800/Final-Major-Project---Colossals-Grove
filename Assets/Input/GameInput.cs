@@ -89,6 +89,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""0211c140-203e-4315-aa7f-d7f85d975d98"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -507,6 +516,39 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Character 2 Follow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a187320-0283-4f64-bb81-6f802c825023"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fb19750-73b3-4120-8f4d-3ae1d2bd8996"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57eb8840-9a4b-41fa-ad5f-57a5063d8b8f"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1101,6 +1143,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Character1Follow = m_Player.FindAction("Character 1 Follow", throwIfNotFound: true);
         m_Player_Character2Follow = m_Player.FindAction("Character 2 Follow", throwIfNotFound: true);
+        m_Player_Options = m_Player.FindAction("Options", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1187,6 +1230,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Character1Follow;
     private readonly InputAction m_Player_Character2Follow;
+    private readonly InputAction m_Player_Options;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1198,6 +1242,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Character1Follow => m_Wrapper.m_Player_Character1Follow;
         public InputAction @Character2Follow => m_Wrapper.m_Player_Character2Follow;
+        public InputAction @Options => m_Wrapper.m_Player_Options;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1228,6 +1273,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Character2Follow.started += instance.OnCharacter2Follow;
             @Character2Follow.performed += instance.OnCharacter2Follow;
             @Character2Follow.canceled += instance.OnCharacter2Follow;
+            @Options.started += instance.OnOptions;
+            @Options.performed += instance.OnOptions;
+            @Options.canceled += instance.OnOptions;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1253,6 +1301,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Character2Follow.started -= instance.OnCharacter2Follow;
             @Character2Follow.performed -= instance.OnCharacter2Follow;
             @Character2Follow.canceled -= instance.OnCharacter2Follow;
+            @Options.started -= instance.OnOptions;
+            @Options.performed -= instance.OnOptions;
+            @Options.canceled -= instance.OnOptions;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1442,6 +1493,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnCharacter1Follow(InputAction.CallbackContext context);
         void OnCharacter2Follow(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

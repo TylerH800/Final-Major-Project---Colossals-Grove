@@ -37,7 +37,11 @@ public class WalkingColossal : MonoBehaviour
 
     private void ReachedWalkPoint()
     {
-        
+        if (walkPoints.Length == 0)
+        {
+            return;
+        }
+
         currentIndex++;
         if (currentIndex >= walkPoints.Length)
         {

@@ -1,13 +1,11 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
+using System.Collections.Generic;
 
-public class GraphicsManager : MonoBehaviour
-{    
-    public static GraphicsManager instance;
-
+public class GraphicsSettings : MonoBehaviour
+{
     public UnityEvent settingsApplied; //used to update the debug text
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown screenModeDropdown;
@@ -31,16 +29,7 @@ public class GraphicsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadSettings();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        LoadSettings();
     }
 
     private void Start()
@@ -78,7 +67,7 @@ public class GraphicsManager : MonoBehaviour
             resolutionDropdown.ClearOptions();
             resolutionDropdown.AddOptions(resolutionStringList);
         }
-        
+
         selectedResolution = PlayerPrefs.GetInt("Resolution");
         //print("Resolution loaded to " + selectedResolution);
 
@@ -131,7 +120,7 @@ public class GraphicsManager : MonoBehaviour
         QualitySettings.SetQualityLevel(graphicsQuality, false);
         graphicsQualityDropdown.value = graphicsQuality;
         //print("Graphics Quality applied to " + graphicsQuality);
-        
+
         //------------vsync------------        
         QualitySettings.vSyncCount = vsync ? 1 : 0;
         vsyncToggle.isOn = vsync;
@@ -212,3 +201,4 @@ public class GraphicsManager : MonoBehaviour
         //print("ShowDebug saved to " + showDebug);
     }
 }
+
