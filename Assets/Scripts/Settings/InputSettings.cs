@@ -30,14 +30,14 @@ public class InputSettings : MonoBehaviour
 
     public void SetXSensitivity(float value)
     {
-        PlayerPrefs.SetFloat("XSensitivity", value * 2.5f);
+        PlayerPrefs.SetFloat("XSensitivity", value);
         xSensText.text = value.ToString("F2");
         EventManager.OnInputSettingsChanged();
     }
 
     public void SetYSensitivity(float value)
     {
-        PlayerPrefs.SetFloat("YSensitivity", value * 2.5f);
+        PlayerPrefs.SetFloat("YSensitivity", value);
         ySensText.text = value.ToString("F2");
         EventManager.OnInputSettingsChanged();
     }

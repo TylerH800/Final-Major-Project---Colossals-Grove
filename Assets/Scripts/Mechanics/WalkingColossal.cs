@@ -1,7 +1,5 @@
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.Android;
 
 public class WalkingColossal : MonoBehaviour
 {

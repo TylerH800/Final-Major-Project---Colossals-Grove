@@ -61,12 +61,12 @@ public class PlayerMovement : MonoBehaviour
     {
         holdToSprint = PlayerPrefs.GetInt("HoldToSprint") == 1;
         holdToCrouch = PlayerPrefs.GetInt("HoldToCrouch") == 1;
-        xSens = PlayerPrefs.GetFloat("XSensitivity");
-        ySens = PlayerPrefs.GetFloat("YSensitivity");
-        
+        xSens = PlayerPrefs.GetFloat("XSensitivity") * InputSettings.sensitivityMultiplier;
+        ySens = PlayerPrefs.GetFloat("YSensitivity") * InputSettings.sensitivityMultiplier;
+        ChangeSensitivity();
     }
 
-    void EMSensitivityChanged()
+    void ChangeSensitivity()
     {
         axisController = GetComponentInChildren<CinemachineInputAxisController>();
         foreach (var c in axisController.Controllers)
@@ -75,10 +75,12 @@ public class PlayerMovement : MonoBehaviour
             if (c.Name == "Look Orbit X")
             {             
                 c.Input.Gain = xSens;
+                print("X sens = " + c.Input.Gain);
             }
             if (c.Name == "Look Orbit Y")
-            {             
+            {
                 c.Input.Gain = -ySens;
+                print("Y sens = " + c.Input.Gain);
             }
         }
     }
@@ -95,8 +97,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        EMInputSettingsChanged(); //gets data about hold to sprint and crouch values
-        EMSensitivityChanged(); //gets data about hold to sprint and crouch values
+        EMInputSettingsChanged(); //gets data about hold to sprint and crouch values        
     }
 
     // Update is called once per frame

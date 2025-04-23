@@ -8,12 +8,13 @@ public class AudioSettings : MonoBehaviour
     public AudioMixer mixer;  
 
     public Slider masterVolumeSlider;
-    public Slider sfxVolumeSlider;
+    public Slider sfxVolumeSlider; 
     public Slider musicVolumeSlider;
 
     public TextMeshProUGUI masterVolumeText;
     public TextMeshProUGUI musicVolumeText;
     public TextMeshProUGUI sfxVolumeText;
+
     private void Start()
     {
         SetAudioValues();
@@ -25,20 +26,20 @@ public class AudioSettings : MonoBehaviour
     void SetAudioValues()
     {
         //thanks to save data checks in awake when the game runs, i can simply set the mixer to the previously saved value
-        mixer.SetFloat("MixerMasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
-        mixer.SetFloat("MixerMusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
-        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);
+        mixer.SetFloat("MixerMaster", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
+        mixer.SetFloat("MixerMusic", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
+        mixer.SetFloat("MixerSFX", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);       
     }
 
     void SetUIValues()
     {
         masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");        
 
         masterVolumeText.text = PlayerPrefs.GetFloat("MasterVolume").ToString("F2");
         musicVolumeText.text = PlayerPrefs.GetFloat("MusicVolume").ToString("F2");
-        sfxVolumeText.text = PlayerPrefs.GetFloat("SFXVolume").ToString("F2");
+        sfxVolumeText.text = PlayerPrefs.GetFloat("SFXVolume").ToString("F2");      
     }
 
     #endregion
@@ -55,8 +56,8 @@ public class AudioSettings : MonoBehaviour
     }
     public void SetSFXVolume(float value)
     {
-        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(value) * 20);
-        musicVolumeText.text = value.ToString("F2");
+        mixer.SetFloat("MixerGameSFX", Mathf.Log10(value) * 20);
+        sfxVolumeText.text = value.ToString("F2");
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
     public void SetMusicVolume(float value)

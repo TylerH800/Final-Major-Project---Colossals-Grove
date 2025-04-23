@@ -16,8 +16,7 @@ public class SaveDataCheck : MonoBehaviour
     {
         SavedFloatCheck("MasterVolume", 0.5f);
         SavedFloatCheck("MusicVolume", 0.5f);
-        SavedFloatCheck("SFXVolume", 0.5f);
-        SavedFloatCheck("DialogueVolume", 0.5f);
+        SavedFloatCheck("SFXVolume", 0.5f);      
         SavedIntCheck("Subtitles", 1);
     }
 

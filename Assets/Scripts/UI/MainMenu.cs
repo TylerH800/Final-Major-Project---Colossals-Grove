@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
     public GameObject loadingInterface;
     public Image loadingProgressBar;
 
+    public SoundObject buttonClick;
+
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
     public SoundObject titleMusic;
     private void Start()
@@ -61,5 +63,10 @@ public class MainMenu : MonoBehaviour
     void TitleMusic()
     {
         AudioManager.Instance.PlayMusic(titleMusic);
+    }
+
+    public void ButtonClickSound()
+    {
+        AudioManager.Instance.PlaySFX(buttonClick);
     }
 }

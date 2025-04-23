@@ -4,6 +4,9 @@ using System;
 
 public static class EventManager
 {
+    //quit game, might need in future
+    public static Action QuitGame;
+    public static void OnQuitGame() => Application.Quit();
     //change input settings
     public static Action InputSettingsChanged;
     public static void OnInputSettingsChanged() => InputSettingsChanged?.Invoke();
