@@ -30,7 +30,7 @@ public class WalkingColossal : MonoBehaviour
         }
         
         anim.SetFloat("Velocity", agent.velocity.magnitude);
-        print(agent.destination);
+        //print(agent.destination);
     }
 
     private void ReachedWalkPoint()

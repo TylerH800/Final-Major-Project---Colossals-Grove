@@ -35,4 +35,8 @@ public static class EventManager
     public static Action GameOver;
     public static void OnGameOver() => GameOver?.Invoke();
 
+    //new objective
+    public static Action<string> NewObjective;
+    public static void OnNewObjective(string objective) => NewObjective?.Invoke(objective);
+
 }
