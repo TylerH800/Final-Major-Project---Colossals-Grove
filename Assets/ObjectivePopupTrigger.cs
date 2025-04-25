@@ -8,7 +8,7 @@ public class ObjectivePopupTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            EventManager.OnNewObjective(newText);
+            EventManager.OnNewObjective(newText);            
         }
     }
 }

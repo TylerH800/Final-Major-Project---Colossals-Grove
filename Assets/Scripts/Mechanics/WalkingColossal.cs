@@ -44,8 +44,7 @@ public class WalkingColossal : MonoBehaviour
         if (currentIndex >= walkPoints.Length)
         {
             currentIndex = 0;
-        } 
-        print("Moving to walkpoint" + currentIndex);
+        }     
 
         NavMeshHit pos; NavMesh.SamplePosition(walkPoints[currentIndex].position, out pos, 5, NavMesh.AllAreas);
         agent.SetDestination(pos.position);

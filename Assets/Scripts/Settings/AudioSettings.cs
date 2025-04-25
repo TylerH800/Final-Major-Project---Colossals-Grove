@@ -26,9 +26,9 @@ public class AudioSettings : MonoBehaviour
     void SetAudioValues()
     {
         //thanks to save data checks in awake when the game runs, i can simply set the mixer to the previously saved value
-        mixer.SetFloat("MixerMaster", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
-        mixer.SetFloat("MixerMusic", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
-        mixer.SetFloat("MixerSFX", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);       
+        mixer.SetFloat("MixerMasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
+        mixer.SetFloat("MixerMusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
+        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);       
     }
 
     void SetUIValues()
@@ -56,7 +56,7 @@ public class AudioSettings : MonoBehaviour
     }
     public void SetSFXVolume(float value)
     {
-        mixer.SetFloat("MixerGameSFX", Mathf.Log10(value) * 20);
+        mixer.SetFloat("MixerSFXVolume", Mathf.Log10(value) * 20);
         sfxVolumeText.text = value.ToString("F2");
         PlayerPrefs.SetFloat("SFXVolume", value);
     }

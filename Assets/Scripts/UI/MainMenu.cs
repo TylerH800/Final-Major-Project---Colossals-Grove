@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
         HideMenu();
         ShowLoadingScreen();
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Test", LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("One", LoadSceneMode.Additive));
         StartCoroutine(LoadingScreen());
     }
 

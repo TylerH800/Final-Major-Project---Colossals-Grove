@@ -6,11 +6,13 @@ public class ObjectiveDisplay : MonoBehaviour
     public TextMeshProUGUI objectiveText;
     public GameObject objectiveObject;
     public float displaySeconds;
+    private float timeLeft;
     private bool onDisplay;
     public SoundObject pingSound;
     private void OnEnable()
     {
         EventManager.NewObjective += NewObjective;
+        timeLeft = displaySeconds;
     }
     private void OnDisable()
     {
@@ -21,10 +23,10 @@ public class ObjectiveDisplay : MonoBehaviour
     {
         if (onDisplay)
         {
-            displaySeconds -= Time.deltaTime;
+            timeLeft -= Time.deltaTime;
         }
 
-        if (displaySeconds <= 0)
+        if (timeLeft <= 0)
         {
             objectiveObject.SetActive(false);
             onDisplay = false;
@@ -32,9 +34,10 @@ public class ObjectiveDisplay : MonoBehaviour
     }
 
     void NewObjective(string objective)
-    {
+    {     
         objectiveText.text = "New Objective: " + objective;
         objectiveObject.SetActive(true);
-        onDisplay = true;   
+        onDisplay = true;
+        timeLeft = displaySeconds;
     }
 }

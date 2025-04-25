@@ -74,6 +74,7 @@ public class TeamMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(EnableAgent());
         StateMachine();
         SetSpeed();
         Animation();
@@ -145,5 +146,18 @@ public class TeamMovement : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
+    }
+
+    IEnumerator EnableAgent()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        while (!NavMesh.SamplePosition(agent.transform.position, out var hit, 1f, NavMesh.AllAreas))
+        {
+            print("No mesh this frame");
+            yield return null;
+        }
+
+        agent.enabled = true;
     }
 }

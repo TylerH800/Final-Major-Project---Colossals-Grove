@@ -75,12 +75,12 @@ public class PlayerMovement : MonoBehaviour
             if (c.Name == "Look Orbit X")
             {             
                 c.Input.Gain = xSens;
-                print("X sens = " + c.Input.Gain);
+                //print("X sens = " + c.Input.Gain);
             }
             if (c.Name == "Look Orbit Y")
             {
                 c.Input.Gain = -ySens;
-                print("Y sens = " + c.Input.Gain);
+                //print("Y sens = " + c.Input.Gain);
             }
         }
     }
