@@ -8,7 +8,7 @@ public class ObjectiveDisplay : MonoBehaviour
     public float displaySeconds;
     private float timeLeft;
     private bool onDisplay;
-    public SoundObject pingSound;
+    public SoundObject notificationSound;
     private void OnEnable()
     {
         EventManager.NewObjective += NewObjective;
@@ -35,6 +35,7 @@ public class ObjectiveDisplay : MonoBehaviour
 
     void NewObjective(string objective)
     {     
+        AudioManager.Instance.PlaySFX(notificationSound);
         objectiveText.text = "New Objective: " + objective;
         objectiveObject.SetActive(true);
         onDisplay = true;

@@ -8,7 +8,7 @@ public class ScenePartLoader : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        isLoaded = SceneLoadedCheck();        
     }
 
     // Update is called once per frame
@@ -19,12 +19,13 @@ public class ScenePartLoader : MonoBehaviour
 
     void TriggerCheck()
     {
-        if (shouldLoad)
+        if (shouldLoad && !SceneLoadedCheck())
         {
             LoadScene();
         }
         else
         {
+            shouldLoad = false;
             UnloadScene();
         }
     }
@@ -32,7 +33,7 @@ public class ScenePartLoader : MonoBehaviour
     void LoadScene()
     {
         if (!isLoaded)
-        {
+        {       
             SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
             isLoaded = true;
         }        
@@ -49,8 +50,8 @@ public class ScenePartLoader : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
+        if (other.CompareTag("Player"))            
+        {    
             shouldLoad = true;
         }
     }
@@ -61,5 +62,19 @@ public class ScenePartLoader : MonoBehaviour
         {
             shouldLoad = false;
         }
+    }
+
+    bool SceneLoadedCheck()
+    {
+        foreach (string s in ScenesList.scenesOpen)
+        {
+            if (s == gameObject.name)
+            {
+                print(gameObject.name + " is open");
+                return true;
+            }
+        }
+
+        return false;
     }
 }

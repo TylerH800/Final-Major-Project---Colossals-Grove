@@ -6,7 +6,7 @@ public class TeamMovement : MonoBehaviour
 {
     public enum AIState
     {
-        idle, following, tasked
+        idle, following, tasked, lost
     }
 
     public AIState state;
@@ -69,12 +69,13 @@ public class TeamMovement : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         SetToFollow();
+        StartCoroutine(EnableAgent());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(EnableAgent());
         StateMachine();
         SetSpeed();
         Animation();
@@ -110,6 +111,11 @@ public class TeamMovement : MonoBehaviour
 
     void SetSpeed()
     {
+        if (!agent.enabled)
+        {
+            return;
+        }
+
         //setting speed
         if (Vector3.Distance(agent.destination, gameObject.transform.position) >= characterValues.runDistance)
         {
@@ -122,7 +128,12 @@ public class TeamMovement : MonoBehaviour
     }
 
     void FollowPlayer()
-    {        
+    {     
+        if (!agent.enabled)
+        {
+            return;
+        }
+
         if (Vector3.Distance(player.transform.position, transform.position) >= characterValues.followDistance)
         {
             agent.SetDestination(player.transform.position);

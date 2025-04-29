@@ -19,13 +19,22 @@ public class MainMenu : MonoBehaviour
         InvokeRepeating("TitleMusic", 0.5f, titleMusic.soundClip.length);
     }
 
-    public void StartGameButton()
+    public void StartGameButton(string startingLevel)
     {
-        HideMenu();
-        ShowLoadingScreen();
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("One", LoadSceneMode.Additive));
-        StartCoroutine(LoadingScreen());
+        GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));
+        StartCoroutine(StartingGameSequence(startingLevel));
+    }
+
+    int FindLevelIndex(string level)
+    {
+        switch (level)
+        {
+            case "One":
+                return 1;
+            default:
+                return 0;
+        }
+
     }
 
     void HideMenu()
@@ -33,16 +42,27 @@ public class MainMenu : MonoBehaviour
         menu.SetActive(false);
     }
 
-    void ShowLoadingScreen()
-    {
-        loadingInterface.SetActive(true);
-    }
 
-    IEnumerator LoadingScreen()
+   
+    IEnumerator StartingGameSequence(string levelName)
     {
+        //stop music
+        AudioManager.Instance.StopMusic();
+
+        //scene loading
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive));
+
+        ScenesList.scenesOpen.Add("Gameplay");
+        ScenesList.scenesOpen.Add(levelName);
+
+        print(ScenesList.scenesOpen);
+        //loading progress bar
+        loadingInterface.SetActive(true);
+
         float totalProgress = 0;
 
-        for (int i = 0;  i < scenesToLoad.Count; i++)
+        for (int i = 0; i < scenesToLoad.Count; i++)
         {
             while (!scenesToLoad[i].isDone)
             {

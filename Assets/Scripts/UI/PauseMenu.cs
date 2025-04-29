@@ -51,8 +51,10 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void ReturnToTitle()
-    {
-        SceneManager.LoadScene("Frontend");
+    {        
+        ScenesList.scenesOpen.Clear();
+        AudioManager.Instance.StopMusic();
+        SceneManager.LoadScene("Frontend");        
     }
 
     public void QuitGame()

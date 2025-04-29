@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 2919340159297659671}
   - component: {fileID: 8087575697909260501}
   - component: {fileID: 6494542067189702478}
+  - component: {fileID: 3984746527837212348}
   m_Layer: 10
   m_Name: Eli
   m_TagString: Eli
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &61650971322366092
 Transform:
   m_ObjectHideFlags: 0
@@ -44,7 +45,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8422481528786005801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.7
   m_Speed: 3.5
@@ -138,6 +139,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3984746527837212348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422481528786005801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd691f357ba37944b0dc6117673f6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7515121114622589339
 PrefabInstance:
   m_ObjectHideFlags: 0

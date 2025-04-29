@@ -39,4 +39,10 @@ public static class EventManager
     public static Action<string> NewObjective;
     public static void OnNewObjective(string objective) => NewObjective?.Invoke(objective);
 
+    //move player to starting position
+    public static Action<Transform, Transform, Transform> PlayerStart;
+    public static void OnPlayerStart(Transform playerPos, Transform eliPos, Transform ledaPos) => PlayerStart?.Invoke(playerPos, eliPos, ledaPos);
+
+
+
 }
