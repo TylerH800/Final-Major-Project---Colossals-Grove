@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
         fadingOut = true;
         fadingIn = false;
 
-        print("Start fading out");
+        //print("Start fading out");
         while (musicSource.volume > 0)
         {
             if (fadingIn)
@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
         musicSource.volume = 0;
         fadingOut = false;
-        print("Finished fading out");
+        //print("Finished fading out");
 
     }
 
@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
         fadingIn = true;
         fadingOut = false;
         musicSource.volume = 0;
-        print("Start fading in");
+        //print("Start fading in");
 
 
         while (musicSource.volume < 1)
@@ -92,10 +92,10 @@ public class AudioManager : MonoBehaviour
                 break;
             }
             musicSource.volume = Mathf.MoveTowards(musicSource.volume, 1, fadeRate * Time.deltaTime);
-            print(musicSource.volume);
+            //print(musicSource.volume);
             yield return null;
         }
-        print("Finished fading in");
+        //print("Finished fading in");
         fadingIn = false;
         musicSource.volume = 1;
     }

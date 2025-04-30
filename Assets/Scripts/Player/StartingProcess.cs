@@ -24,7 +24,7 @@ public class StartingProcess : MonoBehaviour
     }
 
     void SetTransform(Transform playerPos, Transform eliPos, Transform ledaPos)
-    {
+    {        
         transform.position = playerPos.position;       
     }
 }

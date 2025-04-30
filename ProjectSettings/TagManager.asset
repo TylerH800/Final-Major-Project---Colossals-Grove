@@ -10,6 +10,7 @@ TagManager:
   - Barrel
   - FxTemporaire
   - NeutralColossal
+  - WanderTrigger
   layers:
   - Default
   - TransparentFX

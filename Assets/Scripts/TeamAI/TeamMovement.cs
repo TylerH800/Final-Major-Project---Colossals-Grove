@@ -18,6 +18,11 @@ public class TeamMovement : MonoBehaviour
 
     private Vector3 currentIdlePosition;
 
+    public float wanderTime;    
+    public float wanderRadius;
+    private float timer;
+    public Transform wanderPos;
+
     #region Events
 
     private void OnEnable()
@@ -106,7 +111,12 @@ public class TeamMovement : MonoBehaviour
         if (state == AIState.following)
         {
             FollowPlayer();
-        }       
+        }   
+        
+        if (state == AIState.lost)
+        {
+            Wander();
+        }
     }
 
     void SetSpeed()
@@ -116,8 +126,13 @@ public class TeamMovement : MonoBehaviour
             return;
         }
 
+        if (state == AIState.lost)
+        {
+            agent.speed = characterValues.walkSpeed;
+        }
+
         //setting speed
-        if (Vector3.Distance(agent.destination, gameObject.transform.position) >= characterValues.runDistance)
+        else if (Vector3.Distance(agent.destination, gameObject.transform.position) >= characterValues.runDistance)
         {
             agent.speed = characterValues.runSpeed;
         }
@@ -142,8 +157,36 @@ public class TeamMovement : MonoBehaviour
         {
             agent.ResetPath();
         }
-
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "WanderTrigger")
+        {
+            state = AIState.lost;
+        }
+    }
+
+    void Wander()
+    {
+        if (Vector3.Distance(transform.position, player.position) <= wanderRadius)
+        {
+            SetToFollow();
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer > wanderTime)
+        {
+            Vector3 pos;
+            if (RandomNavmeshLocation(wanderRadius, wanderPos.position, out pos))
+            {
+                agent.SetDestination(pos);
+                timer = 0;
+            }
+        }
+    }
+
     bool RandomNavmeshLocation(float radius, Vector3 centre, out Vector3 result)
     {
         Vector3 randomPoint = centre + Random.insideUnitSphere * radius; //random point in a sphere 

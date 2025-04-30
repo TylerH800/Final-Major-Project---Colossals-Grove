@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameMusic
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: a4fbfabce775db244b16e077c231ad00, type: 3}
-  volume: 1
+  volume: 0
