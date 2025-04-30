@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject menu;
     public GameObject loadingInterface;
     public Image loadingProgressBar;
+    public Animator crossfade;
 
     public SoundObject buttonClick;
 
@@ -42,12 +43,17 @@ public class MainMenu : MonoBehaviour
         menu.SetActive(false);
     }
 
-
-   
     IEnumerator StartingGameSequence(string levelName)
     {
         //stop music
         AudioManager.Instance.StopMusic();
+
+        //crossfade
+        crossfade.SetTrigger("Close");
+        yield return new WaitForSeconds(1f); //wait for crossfade to be open.
+
+        //loading progress bar
+        loadingInterface.SetActive(true);
 
         //scene loading
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
@@ -55,10 +61,6 @@ public class MainMenu : MonoBehaviour
 
         ScenesList.scenesOpen.Add("Gameplay");
         ScenesList.scenesOpen.Add(levelName);
-
-        print(ScenesList.scenesOpen);
-        //loading progress bar
-        loadingInterface.SetActive(true);
 
         float totalProgress = 0;
 

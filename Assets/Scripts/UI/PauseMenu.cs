@@ -2,12 +2,18 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
     public static bool gamePaused;
     public PlayerInput playerInput;
+
+    public GameObject loadingInterface;
+    public Image loadingProgressBar;
+    private AsyncOperation sceneLoad;
+    public Animator crossfade;
 
     public SoundObject buttonClick;
 
@@ -52,9 +58,37 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToTitle()
     {        
+        StartCoroutine(LoadingSequence());
+    }
+
+    IEnumerator LoadingSequence()
+    {
         ScenesList.scenesOpen.Clear();
+        Time.timeScale = 1f;
+        gamePaused = false;
+
+        //stop music
         AudioManager.Instance.StopMusic();
-        SceneManager.LoadScene("Frontend");        
+
+        //crossfade
+        crossfade.SetTrigger("Close");
+        yield return new WaitForSeconds(1f); //wait for crossfade to be open.
+
+        //loading progress bar
+        loadingInterface.SetActive(true);
+
+        //scene loading
+        SceneManager.LoadSceneAsync("Frontend");
+
+        float totalProgress = 0;
+
+        while(!sceneLoad.isDone)
+        {
+            totalProgress += sceneLoad.progress;
+            loadingProgressBar.fillAmount = totalProgress;
+            yield return null;
+        }
+
     }
 
     public void QuitGame()
