@@ -169,7 +169,7 @@ public class TeamMovement : MonoBehaviour
 
     void Wander()
     {
-        if (Vector3.Distance(transform.position, player.position) <= wanderRadius)
+        if (Vector3.Distance(transform.position, player.position) <= wanderRadius * 2.5f)
         {
             SetToFollow();
         }

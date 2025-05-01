@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetPlayerPosition()
     {
+        print(currentLevelIndex);
         EventManager.OnPlayerStart(playerSpawnPositions[currentLevelIndex], eliSpawnPositions[currentLevelIndex], ledaSpawnPositions[currentLevelIndex]);
 
     }

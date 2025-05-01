@@ -75,6 +75,9 @@ MonoBehaviour:
   state: 0
   characterValues: {fileID: 11400000, guid: 8ba9ae928a3cacb46b11fc892a9d6c2e, type: 2}
   agent: {fileID: 0}
+  wanderTime: 6
+  wanderRadius: 5
+  wanderPos: {fileID: 0}
 --- !u!114 &6088752476235251639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd691f357ba37944b0dc6117673f6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 1
 --- !u!1001 &2844165503127894022
 PrefabInstance:
   m_ObjectHideFlags: 0

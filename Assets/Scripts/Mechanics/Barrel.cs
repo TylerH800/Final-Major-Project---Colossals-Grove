@@ -26,7 +26,8 @@ public class Barrel : MonoBehaviour
     }
 
     public IEnumerator Explode()
-    {        
+    {
+        print("Explode");
         yield return new WaitForSeconds(smokeTime);
         Instantiate(smokeFX, transform.position, Quaternion.identity);        
         source.PlayOneShot(smoke.soundClip, smoke.volume);

@@ -8,7 +8,7 @@ public class TeamStartingProcess : MonoBehaviour
         Leda
     }
 
-    private Character character;
+    public Character character;
 
     private void OnEnable()
     {        

@@ -46,10 +46,11 @@ public class PlayerInteraction : MonoBehaviour
     void CheckForInteraction()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100))
-        {
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100, whatIsObstacle))
+        {           
             GameObject parent = hit.transform.root.gameObject
                 ;
+          
             if (parent.layer != LayerMask.NameToLayer("Obstacle"))
             {
                 prompt.SetActive(false);
@@ -90,7 +91,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     
         RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 100))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 100, whatIsObstacle))
         {
             GameObject parent = hit.transform.root.gameObject;
 
