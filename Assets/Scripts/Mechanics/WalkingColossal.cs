@@ -17,6 +17,16 @@ public class WalkingColossal : MonoBehaviour
         agent.SetDestination(walkPoints[0].position);
     }
 
+    private void OnEnable()
+    {
+        EventManager.ResetLevel += EMResetLevel;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.ResetLevel -= EMResetLevel;
+    }
+
     private void Update()
     {
         if (!walkPointSet && agent.remainingDistance <= agent.stoppingDistance)
@@ -49,5 +59,12 @@ public class WalkingColossal : MonoBehaviour
         NavMeshHit pos; NavMesh.SamplePosition(walkPoints[currentIndex].position, out pos, 5, NavMesh.AllAreas);
         agent.SetDestination(pos.position);
         walkPointSet = true;
-    }  
+    }
+
+    private void EMResetLevel()
+    {
+        ReachedWalkPoint();
+        agent.SetDestination(walkPoints[0].position);
+        transform.position = walkPoints[0].position;
+    }
 }

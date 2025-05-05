@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Explosion
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: 4d435c37d9f13ee46a787c46913b908a, type: 3}
-  volume: 5
+  volume: 1

@@ -56,7 +56,7 @@ public class EliInteraction : MonoBehaviour
             if (parent.CompareTag("Gate"))
             {
                 if (canPush)
-                {
+                {                   
                     anim.SetTrigger("PushGate");
                     canPush = false;
 
@@ -67,7 +67,8 @@ public class EliInteraction : MonoBehaviour
             }
 
             if (parent.CompareTag("Barrel") && canIgnite)
-            {    
+            {
+                parent.layer = LayerMask.NameToLayer("InactiveObstacle");
                 anim.SetTrigger("Ignite");
                 transform.LookAt(parent.transform.position, Vector3.up);
                 canIgnite = false;

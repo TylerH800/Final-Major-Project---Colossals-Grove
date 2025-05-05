@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Barrel : MonoBehaviour
@@ -13,7 +14,7 @@ public class Barrel : MonoBehaviour
     public GameObject barrelPrefab;
 
     public SoundObject smoke;
-    public SoundObject explosion;
+    public GameObject explosionSrc;
 
     public float explosionRadius = 5;
     public LayerMask whatIsSleepingColossal;
@@ -25,44 +26,51 @@ public class Barrel : MonoBehaviour
         startPos = transform.position;
     }
 
-    public IEnumerator Explode()
+    private void OnEnable()
     {
-        print("Explode");
+        EventManager.ResetLevel += EMResetLevel;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.ResetLevel -= EMResetLevel;
+    }
+
+    public IEnumerator Explode()
+    {        
         yield return new WaitForSeconds(smokeTime);
+
+        //smoke
         Instantiate(smokeFX, transform.position, Quaternion.identity);        
         source.PlayOneShot(smoke.soundClip, smoke.volume);
+
         yield return new WaitForSeconds(igniteTime - smokeTime);
 
-        Instantiate(explosionFX, transform.position, Quaternion.identity);    
-        source.PlayOneShot(explosion.soundClip, explosion.volume);
+        //explosion
+        Instantiate(explosionFX, transform.position, Quaternion.identity);
+        Instantiate(explosionSrc, transform.position, Quaternion.identity);
 
         if (!Physics.CheckSphere(transform.position, explosionRadius, whatIsSleepingColossal))
         {
-            //print("no hit");
             GameObject obj = Instantiate(barrelPrefab, startPos + new Vector3(0, spawnOffset, 0), Quaternion.Euler(-90, 0, 0));
             obj.layer = LayerMask.NameToLayer("Obstacle");
         }
-        
 
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, whatIsSleepingColossal);
 
-        if (hits != null)
-        {
-            foreach (Collider col in hits)
-            {
-                print(col.name);
-                if (col.GetComponent<SleepingColossal>() != null)
-                {
-                    col.GetComponent<SleepingColossal>().Move();
-                }
+        foreach (Collider col in hits)
+        {            
+            if (col.GetComponent<SleepingColossal>() != null)
+            {              
+                col.GetComponent<SleepingColossal>().Move();
             }
         }
-        else
-        {
-            
-        }
+        gameObject.SetActive(false);
+    }
 
-        Destroy(gameObject);
+    void EMResetLevel()
+    {
+        transform.position = startPos;
     }
 
 

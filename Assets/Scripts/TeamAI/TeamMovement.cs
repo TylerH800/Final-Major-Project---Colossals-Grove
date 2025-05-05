@@ -50,6 +50,11 @@ public class TeamMovement : MonoBehaviour
 
     void EMChangeAIMode() //toggles between idle and follow
     {
+        if (state == AIState.lost)
+        {
+            return;
+        }
+
         if (state == AIState.idle)
         {
             state = AIState.following;
@@ -93,11 +98,11 @@ public class TeamMovement : MonoBehaviour
     void SetToIdle()
     {
         agent.SetDestination(transform.position);
-        state = AIState.following;
+        state = AIState.idle;
     }
 
     void SetToFollow()
-    {        
+    {
         state = AIState.following;
     }
 
@@ -162,8 +167,8 @@ public class TeamMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "WanderTrigger")
-        {
-            state = AIState.lost;
+        {          
+            state = AIState.lost;        
         }
     }
 
@@ -174,13 +179,15 @@ public class TeamMovement : MonoBehaviour
             SetToFollow();
         }
 
-        timer += Time.deltaTime;
+        timer += Time.deltaTime;    
 
         if (timer > wanderTime)
         {
+            //print("reset");
             Vector3 pos;
             if (RandomNavmeshLocation(wanderRadius, wanderPos.position, out pos))
             {
+                //print("2");
                 agent.SetDestination(pos);
                 timer = 0;
             }

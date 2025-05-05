@@ -43,6 +43,8 @@ public static class EventManager
     public static Action<Transform, Transform, Transform> PlayerStart;
     public static void OnPlayerStart(Transform playerPos, Transform eliPos, Transform ledaPos) => PlayerStart?.Invoke(playerPos, eliPos, ledaPos);
 
-
+    //reset level
+    public static Action ResetLevel;
+    public static void OnResetLevel() => ResetLevel?.Invoke();
 
 }

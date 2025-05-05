@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gate_Close
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: 0ae02e8a40057b945abbefb292167eda, type: 3}
-  volume: 1
+  volume: 1.5

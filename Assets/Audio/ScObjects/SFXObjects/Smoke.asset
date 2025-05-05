@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Smoke
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: ff7bea01ade7e0d4aaa68d8a45d6f1e6, type: 3}
-  volume: 1
+  volume: 0.2

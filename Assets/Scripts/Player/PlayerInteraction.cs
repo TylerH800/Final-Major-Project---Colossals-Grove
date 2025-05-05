@@ -127,7 +127,7 @@ public class PlayerInteraction : MonoBehaviour
                     break;
                 case "Barrel":
                     EventManager.OnEliIgnite(parent.transform.position);
-                    parent.layer = LayerMask.NameToLayer("InactiveObstacle");
+                    
                     break;
                 case "NeutralColossal":
                     EventManager.OnLedaBait(parent.transform.position);

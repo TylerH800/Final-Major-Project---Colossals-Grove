@@ -22,9 +22,10 @@ public class TeamStartingProcess : MonoBehaviour
 
     void SetTransform(Transform playerPos, Transform eliPos, Transform ledaPos)
     {
+       
         if (character == Character.Eli)
         {
-            transform.position = eliPos.position;
+            transform.position = eliPos.position;           
         }
         else if (character == Character.Leda)
         {

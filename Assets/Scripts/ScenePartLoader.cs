@@ -70,7 +70,7 @@ public class ScenePartLoader : MonoBehaviour
         {
             if (s == gameObject.name)
             {
-                print(gameObject.name + " is open");
+                //print(gameObject.name + " is open");
                 return true;
             }
         }

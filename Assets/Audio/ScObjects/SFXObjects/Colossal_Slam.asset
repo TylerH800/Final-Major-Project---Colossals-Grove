@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Colossal_Slam
   m_EditorClassIdentifier: 
   soundClip: {fileID: 8300000, guid: 5113894fc2559c141bf8f8369c64bb42, type: 3}
-  volume: 1
+  volume: 1.5

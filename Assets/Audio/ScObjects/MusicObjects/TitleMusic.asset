@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7572679ab8d1c3c4aaf1ff90111eb8b4, type: 3}
   m_Name: TitleMusic
   m_EditorClassIdentifier: 
-  soundClip: {fileID: 8300000, guid: ef31822ea40afe9468a6d3486ce8d112, type: 3}
-  volume: 0
+  soundClip: {fileID: 8300000, guid: 5ff81bf601d8ee7488f71fec0c5be796, type: 3}
+  volume: 1

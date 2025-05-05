@@ -184,7 +184,7 @@ MonoBehaviour:
   smokeFX: {fileID: 100000, guid: 298ea2e9f387a124d9ee2b3ac6bb3a23, type: 3}
   barrelPrefab: {fileID: 1541137920362632860}
   smoke: {fileID: 11400000, guid: d8f364cce4043764190eb92ed4b6ef5a, type: 2}
-  explosion: {fileID: 11400000, guid: 2e28e2e1c9be5ad4c8f6d9dbd983795e, type: 2}
+  explosionSrc: {fileID: 4389657545015616576, guid: fce32bdd5db7c9147a96d87811831e67, type: 3}
   explosionRadius: 5
   whatIsSleepingColossal:
     serializedVersion: 2
@@ -417,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108245589983978128, guid: 03fc9d38e2dd7c343baa918a99f6d833, type: 3}
       propertyPath: m_Intensity
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 108245589983978128, guid: 03fc9d38e2dd7c343baa918a99f6d833, type: 3}
       propertyPath: m_Shadows.m_Type
