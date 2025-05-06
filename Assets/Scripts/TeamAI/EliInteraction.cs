@@ -63,6 +63,7 @@ public class EliInteraction : MonoBehaviour
                     parent.GetComponent<FenceGate>().animator.SetBool("Open", true);
                     parent.GetComponent<FenceGate>().animator.SetBool("Close", false);
                     parent.GetComponent<NavMeshObstacle>().enabled = false;
+                    tm.state = TeamMovement.AIState.idle;
                 }
             }
 
@@ -97,7 +98,7 @@ public class EliInteraction : MonoBehaviour
         canIgnite = true;
     }
 
-    void CanPushCD()
+    public void CanPushCD()
     {
         canPush = true;
     }

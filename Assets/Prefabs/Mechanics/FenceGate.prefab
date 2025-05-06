@@ -580,6 +580,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   openSound: {fileID: 11400000, guid: 6da2ae4be38e6a7488d7a2f83b2d57ee, type: 2}
   closeSound: {fileID: 11400000, guid: b9d510829fb8a3745b19e2ba31c98738, type: 2}
+  whatIsEli:
+    serializedVersion: 2
+    m_Bits: 2048
   source: {fileID: 293833788010986540}
 --- !u!208 &5837880169375560905
 NavMeshObstacle:

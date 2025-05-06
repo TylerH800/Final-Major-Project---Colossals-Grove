@@ -35,6 +35,7 @@ public class ScenePartLoader : MonoBehaviour
         if (!isLoaded)
         {       
             SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
+            ScenesList.scenesOpen.Add(gameObject.name);
             isLoaded = true;
         }        
     }
@@ -44,6 +45,7 @@ public class ScenePartLoader : MonoBehaviour
         if (isLoaded)
         {
             SceneManager.UnloadSceneAsync(gameObject.name);
+            ScenesList.scenesOpen.Remove(gameObject.name);
             isLoaded = false;
         }
     }

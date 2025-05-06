@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
     public void SetLevelIndex(int index)
     {
         currentLevelIndex = index;
+        print(index);
     }
     public void SetPlayerPosition()
     {    
+        print(currentLevelIndex + " 2");
         EventManager.OnPlayerStart(playerSpawnPositions[currentLevelIndex], eliSpawnPositions[currentLevelIndex], ledaSpawnPositions[currentLevelIndex]);
     }
 }

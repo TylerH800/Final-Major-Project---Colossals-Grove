@@ -172,7 +172,7 @@ MonoBehaviour:
   hitRadius: 5
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
 --- !u!82 &878378473717772427
 AudioSource:
   m_ObjectHideFlags: 0

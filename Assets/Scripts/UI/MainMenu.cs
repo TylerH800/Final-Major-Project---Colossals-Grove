@@ -23,15 +23,19 @@ public class MainMenu : MonoBehaviour
     public void StartGameButton(string startingLevel)
     {
         GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));
+        print("START");
         StartCoroutine(StartingGameSequence(startingLevel));
     }
 
     int FindLevelIndex(string level)
     {
+        print(level);
         switch (level)
         {
-            case "One":
+            case "LevelOne":
                 return 1;
+            case "LevelTwo":
+                return 2;
             default:
                 return 0;
         }
