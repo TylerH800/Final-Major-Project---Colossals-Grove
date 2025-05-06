@@ -463,7 +463,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 29.860325, y: 1.8762197, z: 1.2739451}
-  m_LocalScale: {x: 122.0598, y: 100, z: 100}
+  m_LocalScale: {x: 122, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8079783644897321989}
@@ -965,7 +965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8079783644897321989}
   - component: {fileID: 5313927637741720058}
-  - component: {fileID: 3395073449833489155}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Gate
@@ -981,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6248726520452799015}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -2.3283062e-10, z: 0.02434755, w: 0.9997036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -998,7 +997,7 @@ Transform:
   - {fileID: 7108658542084848668}
   - {fileID: 5101725032601906110}
   m_Father: {fileID: 5388485465883610737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.79}
 --- !u!65 &5313927637741720058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1020,22 +1019,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0016572534, y: 0.033347063, z: 0.029638523}
   m_Center: {x: 0.00016192862, y: 0.018024754, z: 0.0045350622}
---- !u!208 &3395073449833489155
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6248726520452799015}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.0008286265, y: 0.016695675, z: 0.01481926}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0.0001619286, y: 0.0180469, z: 0.004535062}
-  m_TimeToStationary: 0.5
 --- !u!1 &7353828121059219619
 GameObject:
   m_ObjectHideFlags: 0

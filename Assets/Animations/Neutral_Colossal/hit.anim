@@ -3447,6 +3447,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 1.2
+    functionName: ReLayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.225
     functionName: HitReg
     data: 
@@ -3456,13 +3463,6 @@ AnimationClip:
     messageOptions: 0
   - time: 1.25
     functionName: SlamSFX
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.6875
-    functionName: ReLayer
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

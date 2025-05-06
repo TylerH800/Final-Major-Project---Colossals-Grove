@@ -10,6 +10,7 @@ public class SaveDataCheck : MonoBehaviour
         CheckAudioSaveData();
         CheckGraphicalSaveData();
         CheckInputSaveData();
+        CheckLevelSaveData();
     }
 
     void CheckAudioSaveData()
@@ -54,6 +55,12 @@ public class SaveDataCheck : MonoBehaviour
         SavedFloatCheck("YSensitivity", 0.5f);
         SavedIntCheck("HoldToCrouch", 0);
         SavedIntCheck("HoldToSprint", 0);
+    }
+
+    void CheckLevelSaveData()
+    {
+        SavedIntCheck("LevelTwoReached", 0);
+        SavedIntCheck("LevelThreeReached", 0);
     }
 
     public void SavedFloatCheck(string key, float defaultValue) //used to avoid repetitive code checking for playerprefs values

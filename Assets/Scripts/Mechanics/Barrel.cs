@@ -52,6 +52,7 @@ public class Barrel : MonoBehaviour
 
         if (!Physics.CheckSphere(transform.position, explosionRadius, whatIsSleepingColossal))
         {
+            print("Respawn");
             GameObject obj = Instantiate(barrelPrefab, startPos + new Vector3(0, spawnOffset, 0), Quaternion.Euler(-90, 0, 0));
             obj.layer = LayerMask.NameToLayer("Obstacle");
         }

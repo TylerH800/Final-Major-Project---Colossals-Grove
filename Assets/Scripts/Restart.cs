@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Restart : MonoBehaviour
 {
     private Animator anim;
+    public SoundObject sound;
 
     private void OnEnable()
     {
@@ -32,6 +33,7 @@ public class Restart : MonoBehaviour
 
     IEnumerator Reload()
     {
+        AudioManager.Instance.PlaySFX(sound);
         List<string> scenesToReload = new List<string>();
 
         foreach (string s in ScenesList.scenesOpen)

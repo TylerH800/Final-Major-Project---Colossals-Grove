@@ -13,17 +13,32 @@ public class MainMenu : MonoBehaviour
 
     public SoundObject buttonClick;
 
+    public GameObject[] levelButtons;
+
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
     public SoundObject titleMusic;
     private void Start()
     {
         InvokeRepeating("TitleMusic", 0.5f, titleMusic.soundClip.length);
+        CheckForLevelsReached();
+    }
+
+    void CheckForLevelsReached()
+    {
+        if (PlayerPrefs.GetInt("LevelTwoReached") == 1)
+        {
+            levelButtons[0].SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("LevelThreeReached") == 1)
+        {
+            levelButtons[1].SetActive(true);
+        }
     }
 
     public void StartGameButton(string startingLevel)
     {
         GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));
-        print("START");
+        //print("START");
         StartCoroutine(StartingGameSequence(startingLevel));
     }
 

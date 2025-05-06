@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepPos1: {fileID: 2667275023725200243}
   stepPos2: {fileID: 8889562602941936661}
-  hitRadius: 5
+  hitRadius: 10
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 3072
