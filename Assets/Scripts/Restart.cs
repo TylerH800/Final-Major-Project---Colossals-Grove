@@ -36,7 +36,7 @@ public class Restart : MonoBehaviour
         AudioManager.Instance.PlaySFX(sound);
         List<string> scenesToReload = new List<string>();
 
-        foreach (string s in ScenesList.scenesOpen)
+        foreach (string s in SceneLoader.Instance.openScenes)
         {
             if (s != "Gameplay" && SceneManager.GetSceneByName(s).isLoaded)
             {

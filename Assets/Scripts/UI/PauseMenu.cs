@@ -63,7 +63,7 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator LoadingSequence()
     {
-        ScenesList.scenesOpen.Clear();
+        SceneLoader.Instance.openScenes.Clear();
         Time.timeScale = 1f;
         gamePaused = false;
 

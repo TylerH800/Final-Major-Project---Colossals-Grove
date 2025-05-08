@@ -35,7 +35,7 @@ public class ScenePartLoader : MonoBehaviour
         if (!isLoaded)
         {       
             SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
-            ScenesList.scenesOpen.Add(gameObject.name);
+            SceneLoader.Instance.openScenes.Add(gameObject.name);
             isLoaded = true;
         }        
     }
@@ -45,7 +45,7 @@ public class ScenePartLoader : MonoBehaviour
         if (isLoaded)
         {
             SceneManager.UnloadSceneAsync(gameObject.name);
-            ScenesList.scenesOpen.Remove(gameObject.name);
+            SceneLoader.Instance.openScenes.Remove(gameObject.name);
             isLoaded = false;
         }
     }
@@ -68,7 +68,7 @@ public class ScenePartLoader : MonoBehaviour
 
     bool SceneLoadedCheck()
     {
-        foreach (string s in ScenesList.scenesOpen)
+        foreach (string s in SceneLoader.Instance.openScenes)
         {
             if (s == gameObject.name)
             {

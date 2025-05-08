@@ -216,6 +216,7 @@ public class TeamMovement : MonoBehaviour
         while (!NavMesh.SamplePosition(agent.transform.position, out var hit, 1f, NavMesh.AllAreas))
         {
             print("No mesh this frame");
+            GameManager.instance.SetPlayerPosition();   
             yield return null;
         }
 

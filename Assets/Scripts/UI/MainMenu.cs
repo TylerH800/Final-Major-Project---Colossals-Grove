@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));
         //print("START");
+        SceneLoader.Instance.LoadGame(startingLevel);
         StartCoroutine(StartingGameSequence(startingLevel));
     }
 
@@ -75,7 +76,7 @@ public class MainMenu : MonoBehaviour
         loadingInterface.SetActive(true);
 
         //scene loading
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
+        /*scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
         scenesToLoad.Add(SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive));
 
         ScenesList.scenesOpen.Add("Gameplay");
@@ -91,7 +92,11 @@ public class MainMenu : MonoBehaviour
                 loadingProgressBar.fillAmount = totalProgress / scenesToLoad.Count;
                 yield return null;
             }
+
         }
+        print("Loaded");
+        */
+
     }
 
     public void ExitGame()
