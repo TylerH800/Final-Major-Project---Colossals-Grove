@@ -42,11 +42,11 @@ public class SceneLoader : MonoBehaviour
             {                
                 yield return null;
             }
-
         }
 
         yield return new WaitForSeconds(0.5f);
-        GameManager.instance.SetPlayerPosition();
+        EventManager.OnLevelLoaded();
+        //GameManager.instance.SetPlayerPosition();
 
         print("Loaded");
     }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SaveDataCheck : MonoBehaviour
 {
+    public static bool checkDone = false;
+
     //this class is used to set all default playerprefs values in one place
 
     private void Awake()
@@ -11,6 +13,8 @@ public class SaveDataCheck : MonoBehaviour
         CheckGraphicalSaveData();
         CheckInputSaveData();
         CheckLevelSaveData();
+        EventManager.OnDataCheckDone();
+        checkDone = true;
     }
 
     void CheckAudioSaveData()
@@ -41,7 +45,9 @@ public class SaveDataCheck : MonoBehaviour
                 
             }
         }
-        SavedIntCheck("Resolution", resolutionList.Count - 1);        
+        SavedIntCheck("Resolution", resolutionList.Count - 1);  
+        print("Rescount = " + resolutionList.Count);
+        print("default =" + (resolutionList.Count - 1));
         SavedIntCheck("GraphicsQuality", 1);
         SavedIntCheck("ScreenMode", 0);
         SavedIntCheck("ShowFPS", 0);

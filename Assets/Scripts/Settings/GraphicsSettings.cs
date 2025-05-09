@@ -27,9 +27,22 @@ public class GraphicsSettings : MonoBehaviour
     private bool vsync;
     private bool showDebug;
 
+    private void OnEnable()
+    {
+        EventManager.dataCheckDone += LoadSettings;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.dataCheckDone -= LoadSettings;
+    }
+
     private void Awake()
     {
-        LoadSettings();
+        if (SaveDataCheck.checkDone)
+        {
+            LoadSettings();
+        }
     }
 
     private void Start()
@@ -91,12 +104,14 @@ public class GraphicsSettings : MonoBehaviour
     {
         //------------Resolution------------
         if (selectedResolution < displayedResolutions.Count)
-        {
+        {                      
             //sets resolution to current index
             Resolution temp = displayedResolutions[selectedResolution];
             Screen.SetResolution(temp.width, temp.height, Screen.fullScreenMode);
-            //print("Resolution applied to index " + selectedResolution);
+            print("Resolution applied to index " + selectedResolution);
             resolutionDropdown.value = selectedResolution;
+            print(temp.width + " " +  temp.height);
+            print(resolutionDropdown.value);
         }
 
         //-----------ScreenMode-------------

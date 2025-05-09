@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
 
     public int currentLevelIndex;
 
+    private void OnEnable()
+    {
+        EventManager.LevelLoaded += SetPlayerPosition;
+    }
+
+    public void OnDisable()
+    {
+        EventManager.LevelLoaded -= SetPlayerPosition;
+    }
     void Awake()
     {
         if (instance == null)

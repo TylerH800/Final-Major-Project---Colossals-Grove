@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
     {
         InvokeRepeating("TitleMusic", 0.5f, titleMusic.soundClip.length);
         CheckForLevelsReached();
+        EventManager.OnLevelLoaded();
     }
 
     void CheckForLevelsReached()

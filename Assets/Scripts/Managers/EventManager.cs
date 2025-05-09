@@ -4,6 +4,10 @@ using System;
 
 public static class EventManager
 {
+    //data check done
+    public static Action dataCheckDone;
+    public static void OnDataCheckDone() => dataCheckDone?.Invoke();
+
     //quit game, might need in future
     public static Action QuitGame;
     public static void OnQuitGame() => Application.Quit();
@@ -46,5 +50,9 @@ public static class EventManager
     //reset level
     public static Action ResetLevel;
     public static void OnResetLevel() => ResetLevel?.Invoke();
+
+    //level loaded
+    public static Action LevelLoaded;
+    public static void OnLevelLoaded() => LevelLoaded?.Invoke();
 
 }
