@@ -108,10 +108,10 @@ public class GraphicsSettings : MonoBehaviour
             //sets resolution to current index
             Resolution temp = displayedResolutions[selectedResolution];
             Screen.SetResolution(temp.width, temp.height, Screen.fullScreenMode);
-            print("Resolution applied to index " + selectedResolution);
+            //print("Resolution applied to index " + selectedResolution);
             resolutionDropdown.value = selectedResolution;
-            print(temp.width + " " +  temp.height);
-            print(resolutionDropdown.value);
+            //print(temp.width + " " +  temp.height);
+            //print(resolutionDropdown.value);
         }
 
         //-----------ScreenMode-------------

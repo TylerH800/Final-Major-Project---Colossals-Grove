@@ -949,6 +949,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173039523}
   m_CullTransparentMesh: 1
+--- !u!1 &177453057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177453058}
+  m_Layer: 0
+  m_Name: LevelThreePlayerSP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &177453058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177453057}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 45.779663, y: 0.14, z: 347.6069}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332251584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &186150173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2125,40 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &332251583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332251584}
+  m_Layer: 0
+  m_Name: Lvl3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &332251584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332251583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 177453058}
+  - {fileID: 1043295943}
+  - {fileID: 1956416085}
+  m_Father: {fileID: 393955058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339440896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,6 +2925,7 @@ Transform:
   m_Children:
   - {fileID: 1837499253}
   - {fileID: 1608953989}
+  - {fileID: 332251584}
   m_Father: {fileID: 1393700554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &401547677
@@ -3530,11 +3596,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b2c2ea8472caa40b47a88cf3badc04, type: 3}
---- !u!1 &469961069 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8235245768931059442, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
-  m_PrefabInstance: {fileID: 4828594032782047001}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &478536971
 GameObject:
   m_ObjectHideFlags: 0
@@ -5625,6 +5686,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339440897}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartGameButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelThree
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &693850921
@@ -8989,6 +9062,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024042847}
   m_CullTransparentMesh: 1
+--- !u!1 &1043295942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043295943}
+  m_Layer: 0
+  m_Name: LevelThreeEliSP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1043295943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043295942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 49.14966, y: 0.08, z: 347.4369}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332251584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1053147301
 GameObject:
   m_ObjectHideFlags: 0
@@ -12037,17 +12141,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPositions:
-  - {fileID: 0}
+  - {fileID: 1670302579}
   - {fileID: 1670302579}
   - {fileID: 1154570930}
+  - {fileID: 177453058}
   eliSpawnPositions:
-  - {fileID: 0}
+  - {fileID: 852024608}
   - {fileID: 259741304}
   - {fileID: 197141300}
+  - {fileID: 1043295943}
   ledaSpawnPositions:
-  - {fileID: 0}
+  - {fileID: 259741304}
   - {fileID: 852024608}
   - {fileID: 562351954}
+  - {fileID: 1956416085}
   currentLevelIndex: 0
 --- !u!4 &1393700554
 Transform:
@@ -14591,18 +14698,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8085133053389255974, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
   m_PrefabInstance: {fileID: 4828594032782047001}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1613954470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469961069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d9dc417bb74404fbfa8d9a357d5652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1625519086 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1215985881782312954, guid: 456bda54ab642434c9748b9c5cd1b73a, type: 3}
@@ -17280,6 +17375,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944644718}
   m_CullTransparentMesh: 1
+--- !u!1 &1956416084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956416085}
+  m_Layer: 0
+  m_Name: LevelThreeLedaSP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956416085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956416084}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 40.60965, y: 0.42, z: 354.9269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332251584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964602097
 GameObject:
   m_ObjectHideFlags: 0
@@ -18642,6 +18768,10 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8085133053389255974, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 10cff513dbd55454b915ad583019b5d5, type: 2}
     - target: {fileID: 8235245768931059442, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
       propertyPath: m_Name
       value: Crossfade
@@ -18649,10 +18779,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8235245768931059442, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1613954470}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbffe2adbefea2940b2f9a1ef68e9c14, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

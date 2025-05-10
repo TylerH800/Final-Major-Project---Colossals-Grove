@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TeamStartingProcess : MonoBehaviour
 {
@@ -9,10 +10,14 @@ public class TeamStartingProcess : MonoBehaviour
     }
 
     public Character character;
+    private NavMeshAgent agent;
+    private TeamMovement tm;
 
     private void OnEnable()
     {        
         EventManager.PlayerStart += SetTransform;
+        agent = GetComponent<NavMeshAgent>();
+        tm = GetComponent<TeamMovement>();
     }
 
     private void OnDisable()
@@ -21,16 +26,24 @@ public class TeamStartingProcess : MonoBehaviour
     }
 
     void SetTransform(Transform playerPos, Transform eliPos, Transform ledaPos)
-    {
-       
+    {       
         if (character == Character.Eli)
         {
-            transform.position = eliPos.position;           
+            agent.Warp(eliPos.position);
+            print("New eli pos: " + agent.transform.position);
+
         }
         else if (character == Character.Leda)
         {
-            transform.position = ledaPos.position;
+            agent.Warp(ledaPos.position);
+            print("New leda pos: " + agent.transform.position);
         }
+
+        if (tm.state != TeamMovement.AIState.lost)
+        {
+            tm.state = TeamMovement.AIState.following;
+        }
+
     }
 
 }

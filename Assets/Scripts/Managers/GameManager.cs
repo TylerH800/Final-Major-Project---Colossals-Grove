@@ -46,5 +46,8 @@ public class GameManager : MonoBehaviour
     {    
         print(currentLevelIndex + " 2");
         EventManager.OnPlayerStart(playerSpawnPositions[currentLevelIndex], eliSpawnPositions[currentLevelIndex], ledaSpawnPositions[currentLevelIndex]);
+        print("Player to: " + playerSpawnPositions[currentLevelIndex].position);
+        print("Eli to: " + eliSpawnPositions[currentLevelIndex].position);
+        print("Leda to: " + ledaSpawnPositions[currentLevelIndex].position);
     }
 }

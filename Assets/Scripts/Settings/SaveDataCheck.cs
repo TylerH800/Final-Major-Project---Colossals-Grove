@@ -46,8 +46,8 @@ public class SaveDataCheck : MonoBehaviour
             }
         }
         SavedIntCheck("Resolution", resolutionList.Count - 1);  
-        print("Rescount = " + resolutionList.Count);
-        print("default =" + (resolutionList.Count - 1));
+        //print("Rescount = " + resolutionList.Count);
+        //print("default =" + (resolutionList.Count - 1));
         SavedIntCheck("GraphicsQuality", 1);
         SavedIntCheck("ScreenMode", 0);
         SavedIntCheck("ShowFPS", 0);

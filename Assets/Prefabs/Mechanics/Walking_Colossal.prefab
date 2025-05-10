@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepPos1: {fileID: 2667275023725200243}
   stepPos2: {fileID: 8889562602941936661}
-  hitRadius: 10
+  hitRadius: 7.5
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 3072
@@ -1119,7 +1119,7 @@ Transform:
   m_GameObject: {fileID: 4144029574364905522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.332, y: 0, z: 0.298}
+  m_LocalPosition: {x: -0.083, y: 0, z: 0.298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -3,14 +3,6 @@ using UnityEngine;
 
 public class StartingProcess : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        //ResetPosition();
-    }
-
-    
-
     public void ResetPosition()
     {
         GameManager.instance.SetPlayerPosition();
@@ -28,6 +20,7 @@ public class StartingProcess : MonoBehaviour
 
     void SetTransform(Transform playerPos, Transform eliPos, Transform ledaPos)
     {        
-        transform.position = playerPos.position;       
+        transform.position = playerPos.position;
+        print("New player pos : " + transform.position);
     }
 }

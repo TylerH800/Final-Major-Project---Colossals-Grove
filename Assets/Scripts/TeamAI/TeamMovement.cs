@@ -216,10 +216,11 @@ public class TeamMovement : MonoBehaviour
         while (!NavMesh.SamplePosition(agent.transform.position, out var hit, 1f, NavMesh.AllAreas))
         {
             print("No mesh this frame");
-            GameManager.instance.SetPlayerPosition();   
+            yield return new WaitForSeconds(0.25f);
             yield return null;
         }
 
+        GameManager.instance.SetPlayerPosition();
         agent.enabled = true;
     }
 }
