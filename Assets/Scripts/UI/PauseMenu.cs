@@ -56,6 +56,12 @@ public class PauseMenu : MonoBehaviour
         canSwitch = true;
     }
 
+    public void Restart()
+    {
+        Unpause();
+        EventManager.OnGameOver();
+    }
+
     public void ReturnToTitle()
     {        
         StartCoroutine(LoadingSequence());
@@ -79,15 +85,6 @@ public class PauseMenu : MonoBehaviour
 
         //scene loading
         SceneManager.LoadSceneAsync("Frontend");
-
-        float totalProgress = 0;
-
-        while(!sceneLoad.isDone)
-        {
-            totalProgress += sceneLoad.progress;
-            loadingProgressBar.fillAmount = totalProgress;
-            yield return null;
-        }
 
     }
 
