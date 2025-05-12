@@ -38,9 +38,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGameButton(string startingLevel)
     {
-        GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));
-        //print("START");
-        SceneLoader.Instance.LoadGame(startingLevel);
+        GameManager.instance.SetLevelIndex(FindLevelIndex(startingLevel));        
         StartCoroutine(StartingGameSequence(startingLevel));
     }
 
@@ -74,32 +72,15 @@ public class MainMenu : MonoBehaviour
         //crossfade
         crossfade.SetTrigger("Close");
         yield return new WaitForSeconds(1f); //wait for crossfade to be open.
-
-        //loading progress bar
-        loadingInterface.SetActive(true);
-
-        //scene loading
-        /*scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive));
-
-        ScenesList.scenesOpen.Add("Gameplay");
-        ScenesList.scenesOpen.Add(levelName);
-
-        float totalProgress = 0;
-
-        for (int i = 0; i < scenesToLoad.Count; i++)
+        
+        if (levelName == "LevelOne")
         {
-            while (!scenesToLoad[i].isDone)
-            {
-                totalProgress += scenesToLoad[i].progress;
-                loadingProgressBar.fillAmount = totalProgress / scenesToLoad.Count;
-                yield return null;
-            }
-
+            SceneManager.LoadSceneAsync("OpeningStory");
         }
-        print("Loaded");
-        */
-
+        else
+        {
+            SceneLoader.Instance.LoadGame(levelName);
+        }
     }
 
     public void ExitGame()

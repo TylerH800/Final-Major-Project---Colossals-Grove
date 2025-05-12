@@ -56,7 +56,9 @@ public class EliInteraction : MonoBehaviour
             if (parent.CompareTag("Gate"))
             {
                 if (canPush)
-                {                   
+                {
+                    parent.layer = LayerMask.NameToLayer("InactiveObstacle");
+
                     anim.SetTrigger("PushGate");
                     canPush = false;
 

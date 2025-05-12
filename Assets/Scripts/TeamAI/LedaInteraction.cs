@@ -29,6 +29,7 @@ public class LedaInteraction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("NeutralColossal") && tm.state == TeamMovement.AIState.tasked)
         {
+            other.transform.root.gameObject.layer = LayerMask.NameToLayer("InactiveObstacle");
             tm.state = TeamMovement.AIState.following;
             other.transform.root.GetComponent<NeutralColossal>().TriggerHit();
         }

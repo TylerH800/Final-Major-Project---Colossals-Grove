@@ -100,30 +100,11 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            /*
-            if (hit.transform.CompareTag("Gate"))
-            {
-                EventManager.OnEliGate(hit.point);
-                parent.layer = LayerMask.NameToLayer("Default");
-            }
-
-            if (hit.transform.CompareTag("Barrel"))
-            {                
-                EventManager.OnEliIgnite(hit.transform.root.position);
-                parent.layer = LayerMask.NameToLayer("Default");
-            }
-
-            if (hit.transform.CompareTag("NeutralColossal"))
-            {
-                EventManager.OnLedaBait(hit.transform.root.position);
-                parent.layer = LayerMask.NameToLayer("Default");
-            } */
-
             switch (parent.tag)
             {
                 case "Gate":
                     EventManager.OnEliGate(hit.point);
-                    parent.layer = LayerMask.NameToLayer("InactiveObstacle");
+                    //parent.layer = LayerMask.NameToLayer("InactiveObstacle");
                     break;
                 case "Barrel":
                     EventManager.OnEliIgnite(parent.transform.position);
@@ -131,7 +112,7 @@ public class PlayerInteraction : MonoBehaviour
                     break;
                 case "NeutralColossal":
                     EventManager.OnLedaBait(parent.transform.position);
-                    parent.layer = LayerMask.NameToLayer("InactiveObstacle");
+                    //parent.layer = LayerMask.NameToLayer("InactiveObstacle");
                     break;          
             }
         }

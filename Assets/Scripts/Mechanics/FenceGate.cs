@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class FenceGate : MonoBehaviour
 {    
     public Animator animator;
+    private NavMeshObstacle obstacle;
     public SoundObject openSound;
     public SoundObject closeSound;
     public LayerMask whatIsEli;
@@ -13,6 +14,7 @@ public class FenceGate : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        obstacle = GetComponent<NavMeshObstacle>();
     }
 
     public void OpenSFX() => source.PlayOneShot(openSound.soundClip, openSound.volume);
@@ -23,19 +25,22 @@ public class FenceGate : MonoBehaviour
         Collider[] e = Physics.OverlapSphere(transform.position, 3, whatIsEli);
         {
             foreach (Collider c in e)
-            {
-                print("team");
+            {           ;
                 TeamMovement tm = c.GetComponent<TeamMovement>();
                 if (tm.state == TeamMovement.AIState.following && c.gameObject.name == "Eli")
-                {
-                    print("following");
+                {                   
                     animator.SetBool("Close", true);
                     animator.SetBool("Open", false);
-                    GetComponent<NavMeshObstacle>().enabled = true;
+                    Invoke("SetObstacle", 1f);
                     gameObject.layer = LayerMask.NameToLayer("Obstacle");
                 }
             }
         }
+    }
+
+    void SetObstacle()
+    {
+        obstacle.enabled = true;
     }
 
 

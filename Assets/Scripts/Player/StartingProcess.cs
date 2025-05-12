@@ -21,6 +21,6 @@ public class StartingProcess : MonoBehaviour
     void SetTransform(Transform playerPos, Transform eliPos, Transform ledaPos)
     {        
         transform.position = playerPos.position;
-        print("New player pos : " + transform.position);
+        //print("New player pos : " + transform.position);
     }
 }

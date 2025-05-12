@@ -30,14 +30,24 @@ public class NeutralColossal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Eli") || other.gameObject.CompareTag("Leda"))
+        if (inLedaAttack)
         {
-            if (inLedaAttack)
+            return;
+        }
+
+        if (other.gameObject.CompareTag("Eli") || other.gameObject.CompareTag("Leda"))
+        {            
+            if (other.gameObject.GetComponent<TeamMovement>().state != TeamMovement.AIState.tasked)
             {
-                return;
-            }
+                anim.SetBool("NormalHit", true);
+                print(inLedaAttack);
+            }            
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
             anim.SetBool("NormalHit", true);
             print(inLedaAttack);
         }
+        
     }
 }

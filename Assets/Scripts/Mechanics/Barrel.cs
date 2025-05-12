@@ -60,12 +60,15 @@ public class Barrel : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, whatIsSleepingColossal);
 
         foreach (Collider col in hits)
-        {            
+        {
+
+            print(col.name);
             if (col.GetComponent<SleepingColossal>() != null)
-            {              
+            {                
                 col.GetComponent<SleepingColossal>().Move();
             }
         }
+        yield return null;
         gameObject.SetActive(false);
     }
 
