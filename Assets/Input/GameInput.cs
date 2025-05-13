@@ -1089,6 +1089,76 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""2cc4840b-62bc-48f4-b924-ba1386436fae"",
+            ""actions"": [
+                {
+                    ""name"": ""ProgressLine"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3fe9f3a-d6c0-4b42-8249-e8c3a05eb86c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipToGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""8331e50b-8d32-40e0-9adf-3f24ea9ebd61"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fddadaab-60d7-41b2-b1e3-b43982b735cb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ProgressLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13baa17f-2a0a-442b-a111-7b935a1da759"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ProgressLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d440fd2-7442-46d1-91fa-c890faf49965"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipToGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e6f5ca4-3f4f-4949-b40f-82d23f48057b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipToGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1177,12 +1247,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_ProgressLine = m_Dialogue.FindAction("ProgressLine", throwIfNotFound: true);
+        m_Dialogue_SkipToGame = m_Dialogue.FindAction("SkipToGame", throwIfNotFound: true);
     }
 
     ~@GameInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInput.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, GameInput.Dialogue.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1468,6 +1543,60 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+    private readonly InputAction m_Dialogue_ProgressLine;
+    private readonly InputAction m_Dialogue_SkipToGame;
+    public struct DialogueActions
+    {
+        private @GameInput m_Wrapper;
+        public DialogueActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ProgressLine => m_Wrapper.m_Dialogue_ProgressLine;
+        public InputAction @SkipToGame => m_Wrapper.m_Dialogue_SkipToGame;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+            @ProgressLine.started += instance.OnProgressLine;
+            @ProgressLine.performed += instance.OnProgressLine;
+            @ProgressLine.canceled += instance.OnProgressLine;
+            @SkipToGame.started += instance.OnSkipToGame;
+            @SkipToGame.performed += instance.OnSkipToGame;
+            @SkipToGame.canceled += instance.OnSkipToGame;
+        }
+
+        private void UnregisterCallbacks(IDialogueActions instance)
+        {
+            @ProgressLine.started -= instance.OnProgressLine;
+            @ProgressLine.performed -= instance.OnProgressLine;
+            @ProgressLine.canceled -= instance.OnProgressLine;
+            @SkipToGame.started -= instance.OnSkipToGame;
+            @SkipToGame.performed -= instance.OnSkipToGame;
+            @SkipToGame.canceled -= instance.OnSkipToGame;
+        }
+
+        public void RemoveCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1537,5 +1666,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnUnpause(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnProgressLine(InputAction.CallbackContext context);
+        void OnSkipToGame(InputAction.CallbackContext context);
     }
 }
