@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor.ShaderKeywordFilter;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -42,6 +41,11 @@ public class SceneLoader : MonoBehaviour
 
         openScenes.Add("Gameplay");
         openScenes.Add(levelName);
+        foreach (string scene in openScenes)
+        {
+            print(scene);
+        }
+        print(openScenes.Count);
 
         //scene loading
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Gameplay"));
@@ -60,6 +64,11 @@ public class SceneLoader : MonoBehaviour
         //GameManager.instance.SetPlayerPosition();
 
         print("Loaded");
+        foreach (string scene in openScenes)
+        {
+            print(scene);
+        }
+        print(openScenes.Count);
     }
     IEnumerator End()
     {

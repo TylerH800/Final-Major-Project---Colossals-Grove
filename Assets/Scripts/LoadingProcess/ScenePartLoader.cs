@@ -44,8 +44,7 @@ public class ScenePartLoader : MonoBehaviour
     {
         if (isLoaded)
         {
-            SceneManager.UnloadSceneAsync(gameObject.name);
-            SceneLoader.Instance.openScenes.Remove(gameObject.name);
+            SceneManager.UnloadSceneAsync(gameObject.name);            
             isLoaded = false;
         }
     }
