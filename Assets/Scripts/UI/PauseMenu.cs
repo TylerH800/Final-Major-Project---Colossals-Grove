@@ -17,8 +17,15 @@ public class PauseMenu : MonoBehaviour
 
     public SoundObject buttonClick;
 
+    private bool muted = true;
+
     private bool canSwitch = true; //input bleeding on first frame
-   
+
+    private void Start()
+    {
+        StartCoroutine(DelaySFX());
+    }
+
     public void Pause()
     {
         if (!gamePaused && canSwitch)
@@ -95,6 +102,18 @@ public class PauseMenu : MonoBehaviour
 
     public void ButtonClickSound()
     {
-        AudioManager.Instance.PlaySFX(buttonClick);
+        if (!muted)
+        {
+            AudioManager.Instance.PlaySFX(buttonClick);
+        }
+    }
+
+    IEnumerator DelaySFX()
+    {
+        print("Mute");
+        AudioManager.Instance.sfxSource.mute = true;
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.sfxSource.mute = false;
+        muted = false;
     }
 }

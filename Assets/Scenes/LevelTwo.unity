@@ -2359,7 +2359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760715362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2632,7 +2632,7 @@ GameObject:
   - component: {fileID: 2010209853}
   - component: {fileID: 2010209852}
   - component: {fileID: 2010209851}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Checkpoint Reached!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2890,6 +2890,10 @@ PrefabInstance:
     - target: {fileID: 5665153627371454578, guid: 6452172c011227c4c89f10ce737415fc, type: 3}
       propertyPath: m_Center.x
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665153627371454578, guid: 6452172c011227c4c89f10ce737415fc, type: 3}
+      propertyPath: m_Extents.x
+      value: 0.425
       objectReference: {fileID: 0}
     - target: {fileID: 8964232414825297688, guid: 6452172c011227c4c89f10ce737415fc, type: 3}
       propertyPath: m_Size.x

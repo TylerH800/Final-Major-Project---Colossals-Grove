@@ -15011,7 +15011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1415450571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22637,6 +22637,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2361017171903543675, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: whatIsObstacle.m_Bits
+      value: 129
+      objectReference: {fileID: 0}
     - target: {fileID: 2376487029051346741, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -23121,6 +23125,30 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 25523099}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: f3fe9f3a-d6c0-4b42-8249-e8c3a05eb86c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 8331e50b-8d32-40e0-9adf-3f24ea9ebd61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: 'Dialogue/ProgressLine[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: 'Dialogue/SkipToGame[/Keyboard/enter]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7900859801337819109, guid: 3c79317569db54d41a575224e9d1f769, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -1285,8 +1285,8 @@ GameObject:
   - component: {fileID: 260980763}
   - component: {fileID: 260980765}
   - component: {fileID: 260980764}
-  m_Layer: 0
-  m_Name: This colossal seems to be sleeping - there must be a way to get it to move?
+  m_Layer: 12
+  m_Name: Push the barrel towards this Colossal and find a way to make it move!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,13 +1300,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260980762}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 76.8, y: 4.78, z: 93.2}
+  m_LocalRotation: {x: -0, y: 0.82671386, z: -0, w: 0.56262267}
+  m_LocalPosition: {x: 83.24, y: 4.78, z: 88.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1450618207}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 111.525, z: 0}
 --- !u!114 &260980764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,8 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b763e6a5fd99a934daef9dc7e7766dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newText: This colossal seems to be sleeping - there must be a way to get it to
-    move?
+  newText: Push the barrel towards this Colossal and find a way to make it move!
 --- !u!65 &260980765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1848,7 +1847,7 @@ GameObject:
   - component: {fileID: 384550731}
   - component: {fileID: 384550733}
   - component: {fileID: 384550732}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: This colossal seems dangerous - find a way to bypass it without getting
     too close!
   m_TagString: Untagged
@@ -2856,8 +2855,8 @@ GameObject:
   - component: {fileID: 487301209}
   - component: {fileID: 487301211}
   - component: {fileID: 487301210}
-  m_Layer: 0
-  m_Name: Use Eli to open the nearby gate and free Leda
+  m_Layer: 12
+  m_Name: Aim at the gate in the left area and interact to free Leda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2890,7 +2889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b763e6a5fd99a934daef9dc7e7766dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newText: Use Eli to open the nearby gate and free Leda
+  newText: Aim at the gate in the left area and interact to free Leda
 --- !u!65 &487301211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6350,6 +6349,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075862745}
   m_Mesh: {fileID: 4300098, guid: f55006f6a32a71b45a114b4680c1e575, type: 3}
+--- !u!1 &1087633807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087633808}
+  - component: {fileID: 1087633810}
+  - component: {fileID: 1087633809}
+  m_Layer: 12
+  m_Name: Once Leda follows you, press 1 or L1 to toggle Eli into follow mode!
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087633808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087633807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 44.94, y: 4.78, z: 106.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1450618207}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1087633809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087633807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b763e6a5fd99a934daef9dc7e7766dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newText: Once Leda follows you, press 1 or L1 to toggle Eli into follow mode!
+--- !u!65 &1087633810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087633807}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 24.987938, y: 12.312098, z: 1}
+  m_Center: {x: 1.3339043, y: 0.6674292, z: 0}
 --- !u!1 &1100551714
 GameObject:
   m_ObjectHideFlags: 0
@@ -7470,7 +7536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450618207}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7493,6 +7559,7 @@ Transform:
   - {fileID: 2121589499}
   - {fileID: 487301209}
   - {fileID: 260980763}
+  - {fileID: 1087633808}
   - {fileID: 384550731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10490,7 +10557,7 @@ GameObject:
   - component: {fileID: 2121589499}
   - component: {fileID: 2121589501}
   - component: {fileID: 2121589500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Search for your first teammate, Eli
   m_TagString: Untagged
   m_Icon: {fileID: 0}

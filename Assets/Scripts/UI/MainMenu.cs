@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     public SoundObject titleMusic;
     private void Start()
     {
+        StartCoroutine(DelaySFX());
         InvokeRepeating("TitleMusic", 0.5f, titleMusic.soundClip.length);
         CheckForLevelsReached();
         //EventManager.OnLevelLoaded();
@@ -101,5 +102,12 @@ public class MainMenu : MonoBehaviour
     public void ButtonClickSound()
     {
         AudioManager.Instance.PlaySFX(buttonClick);
+    }
+
+    IEnumerator DelaySFX()
+    {
+        AudioManager.Instance.sfxSource.mute = true;
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.sfxSource.mute = false;
     }
 }
