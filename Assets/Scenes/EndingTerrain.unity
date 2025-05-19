@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 196336095}
   - component: {fileID: 196336097}
   - component: {fileID: 196336096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EndTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
