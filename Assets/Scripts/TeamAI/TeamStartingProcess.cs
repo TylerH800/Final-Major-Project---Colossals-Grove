@@ -12,6 +12,7 @@ public class TeamStartingProcess : MonoBehaviour
     public Character character;
     private NavMeshAgent agent;
     private TeamMovement tm;
+    public LayerMask whatIsGround;
 
     private void OnEnable()
     {        
@@ -44,6 +45,14 @@ public class TeamStartingProcess : MonoBehaviour
             tm.state = TeamMovement.AIState.following;
         }
 
+    }
+
+    private void Update()
+    {
+        if (!Physics.CheckSphere(transform.position, 5, whatIsGround))
+        {
+            GameManager.instance.SetPlayerPosition();
+        }
     }
 
 }

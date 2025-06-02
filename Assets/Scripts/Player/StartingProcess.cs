@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartingProcess : MonoBehaviour
 {
+    public LayerMask whatIsGround;
     public void ResetPosition()
     {
         GameManager.instance.SetPlayerPosition();
@@ -28,10 +29,10 @@ public class StartingProcess : MonoBehaviour
 
     IEnumerator CheckPos(Vector3 pos)
     {
-        while (transform.position != pos)
+        while (!Physics.CheckSphere(transform.position, 2f, whatIsGround))
         {
             transform.position = pos;
             yield return null;
         }
-    }
+    }   
 }

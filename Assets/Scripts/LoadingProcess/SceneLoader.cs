@@ -61,7 +61,7 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         EventManager.OnLevelLoaded();
-        //GameManager.instance.SetPlayerPosition();
+        GameManager.instance.SetPlayerPosition();
 
         print("Loaded");
         foreach (string scene in openScenes)
