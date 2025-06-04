@@ -5,7 +5,7 @@ public class NeutralColossalHitReg : MonoBehaviour
     private NeutralColossal nc;
     public AudioSource source;
     public SoundObject slam;
-    public GameObject collider;
+    public GameObject col;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +18,9 @@ public class NeutralColossalHitReg : MonoBehaviour
 
     public void SlamSFX() => source.PlayOneShot(slam.soundClip, slam.volume);
 
-    public void RemoveCollider() => collider.SetActive(false);
+    public void RemoveCollider() => col.SetActive(false);
 
-    public void AddCollider() => collider.SetActive(true);
+    public void AddCollider() => col.SetActive(true);
     
 
         

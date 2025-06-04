@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 1898556122861224334}
   slam: {fileID: 11400000, guid: 1eb10462c8fa52e4bbd072c3210e8d4b, type: 2}
-  collider: {fileID: 1671902564730740520}
+  col: {fileID: 1671902564730740520}
 --- !u!82 &1898556122861224334
 AudioSource:
   m_ObjectHideFlags: 0

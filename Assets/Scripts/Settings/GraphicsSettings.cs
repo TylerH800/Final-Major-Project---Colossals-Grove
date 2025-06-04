@@ -177,7 +177,7 @@ public class GraphicsSettings : MonoBehaviour
     {
         vsync = index;
         ApplySettings();
-        SaveSettings();
+        SaveSettings();       
     }
 
     public void SetShowFps(bool index)
