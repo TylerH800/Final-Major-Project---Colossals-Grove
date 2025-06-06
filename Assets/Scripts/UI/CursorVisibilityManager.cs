@@ -13,10 +13,12 @@ public class CursorVisibilityManager : MonoBehaviour
 
             if (lastDevice.displayName == "Mouse")
             {
+                print("Mouse");
                 Cursor.visible = true;
             }
             else
             {
+                print("Other");
                 Cursor.visible = false;
             }
         }

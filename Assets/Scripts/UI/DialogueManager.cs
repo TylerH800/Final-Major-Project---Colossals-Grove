@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
-    public enum Story { start, end }
+    public enum Story { start, end, openingWarning }
 
     public Story story;
     public TextMeshProUGUI dialogueText;
@@ -118,9 +118,9 @@ public class DialogueManager : MonoBehaviour
             SceneLoader.Instance.LoadGame("LevelOne");
         }
         else
-        {
+        {                            
             SceneLoader.Instance.openScenes.Clear();
             SceneManager.LoadSceneAsync("Frontend");
-        }
+        }        
     }
 }
